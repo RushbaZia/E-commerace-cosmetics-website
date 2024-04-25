@@ -20,7 +20,7 @@
 </div>
 @endsection
 
-@sections('content')
+@section('content')
 
 <section class="ftco-section contact-section">
     <div class="container mt-5">

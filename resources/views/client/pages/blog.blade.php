@@ -1,4 +1,4 @@
-@extends('client.blade.php')
+@extends('client.common.layout')
 
 @section('hero')
 <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
