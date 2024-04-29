@@ -1,11 +1,16 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('products', ProductController::class);
+Route::resource('category', CategoryController::class);
 
 Route::get('/client/dashboard', function () {
     return view('client.dashboard');
@@ -31,11 +36,9 @@ Route::get('/client/services', function () {
 });
 
 
-
-Route::get('admin/home', [HomeController::class, 'adminDashboard'])->name('adminDashboard')->middleware('is_admin');
-// Route::get('/admin/dashboard', function () {
-//     return view('admin.pages.dashboard');
-// });
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard');
+});
 Route::get('/admin/profile', function () {
     return view('admin.pages.profile');
 });
