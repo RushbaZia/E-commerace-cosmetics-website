@@ -1,6 +1,6 @@
 @extends('admin.common.layout')
 @section('content')
-<main id="main" class="main">
+
     <h3 class="text-center pt-3">Edit Your Product</h3>
     <div class="container pt-3">
         <form class="row g-3" method="post" action="{{route('products.update', [$product->id] )}}" enctype="multipart/form-data">
@@ -66,5 +66,5 @@
 
         </form>
     </div>
-</main>
+
 @endsection

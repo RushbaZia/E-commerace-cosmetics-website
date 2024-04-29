@@ -1,6 +1,5 @@
 @extends('admin.common.layout')
 @section('content')
-<main id="main" class="main">
     <center>
         <h1>All Products
             <a href="{{route('products.create')}}" class=" btn btn-warning mb-2">
@@ -63,5 +62,5 @@
             {{$product->links('pagination::bootstrap-5')}}
         </div>
     </div>
-</main>
+
 @endsection

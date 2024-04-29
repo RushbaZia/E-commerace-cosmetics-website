@@ -1,7 +1,6 @@
 @extends('admin.common.layout')
 @section('create')
 
-<main id="main" class="main">
     <h1 class="text-center border border-4 border-dark bg-warning">Product Details</h1>
     <div class="container">
         <div class="row">
@@ -75,5 +74,5 @@
             </main>
         </div>
     </div>
-</main>
+
 @endsection

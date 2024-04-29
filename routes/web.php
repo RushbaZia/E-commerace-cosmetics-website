@@ -4,6 +4,9 @@ use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -11,6 +14,13 @@ Route::get('/', function () {
 
 Route::resource('products', ProductController::class);
 Route::resource('category', CategoryController::class);
+
+Route::resource('permissions', PermissionController::class);
+Route::resource('roles', RoleController::class);
+Route::get('roles/{id}/givePermissions', [RoleController::class, 'addPermissionToRole'])->name('roles.givePermissions');
+Route::put('roles/{id}/givePermissions', [RoleController::class, 'givePermissionToRole']);
+Route::resource('users', UserController::class);
+
 
 Route::get('/client/dashboard', function () {
     return view('client.dashboard');

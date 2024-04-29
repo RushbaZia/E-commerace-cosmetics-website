@@ -1,7 +1,6 @@
 @extends('admin.common.layout')
 
 @section('content')
-<main id="main" class="main">
 
     <div class="pagetitle">
         <h1>Profile</h1>
@@ -292,6 +291,4 @@
             </div>
         </div>
     </section>
-
-</main><!-- End #main -->
 @endsection

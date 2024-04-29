@@ -62,8 +62,59 @@
           </li>
         </ul>
       </li><!-- End Tables Nav -->
+      <li class="nav-heading">Roles/Permissions</li>
 
-
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#roles-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Roles</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="roles-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{{route('roles.index')}}">
+              <i class="bi bi-circle"></i><span>Roles</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('roles.create')}}">
+              <i class="bi bi-circle"></i><span>Create</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#permission-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Permissions</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="permission-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{{route('permissions.index')}}">
+              <i class="bi bi-circle"></i><span>Permissions</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('permissions.create')}}">
+              <i class="bi bi-circle"></i><span>Create</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#user-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Users</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="user-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{{route('users.index')}}">
+              <i class="bi bi-circle"></i><span>Users</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('users.create')}}">
+              <i class="bi bi-circle"></i><span>Create</span>
+            </a>
+          </li>
+        </ul>
+      </li>
 
       <li class="nav-heading">Pages</li>
 

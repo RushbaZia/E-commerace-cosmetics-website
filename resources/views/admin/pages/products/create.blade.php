@@ -1,6 +1,6 @@
 @extends('admin.common.layout')
 @section('content')
-<main id="main" class="main">
+
     <h3 class="text-center pt-3">Add your Products
     </h3>
 
@@ -99,7 +99,4 @@
 
         </form>
     </div>
-
-</main>
-
 @endsection
