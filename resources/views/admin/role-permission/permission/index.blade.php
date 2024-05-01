@@ -39,17 +39,17 @@
                                 <td>{{ $permission->id}}</td>
                                 <td>{{ $permission->name}}</td>
                                 <td>
-                                   
-                                    <a href="{{route('permissions.edit',[$permission->id])}}" class="btn btn-success">Edit</a>
-                                   
 
-                                    
+                                    <a href="{{route('permissions.edit',[$permission->id])}}" class="btn btn-success">Edit</a>
+
+
+
                                     <form method="post" action="{{route('permissions.destroy',[$permission->id])}}" class="float-end">
                                         @csrf
                                         @method('delete')
                                         <button class="btn btn-danger">Delete</button>
                                     </form>
-            
+
                                 </td>
                             </tr>
                         </tbody>
@@ -58,6 +58,9 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div>
+        
     </div>
 </div>
 @endsection

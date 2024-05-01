@@ -4,7 +4,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="dashboard">
+        <a class="nav-link " href="/admin/dashboard">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -34,12 +34,12 @@
         </a>
         <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="">
+            <a href="{{route('category.index')}}">
               <i class="bi bi-circle"></i><span>Categories</span>
             </a>
           </li>
           <li>
-            <a href="">
+            <a href="{{route('category.create')}}">
               <i class="bi bi-circle"></i><span>Create</span>
             </a>
           </li>
@@ -51,12 +51,12 @@
         </a>
         <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="tables-general.html">
+            <a href="{{route('posts.index')}}">
               <i class="bi bi-circle"></i><span>Posts</span>
             </a>
           </li>
           <li>
-            <a href="tables-data.html">
+            <a href="{{route('posts.create')}}">
               <i class="bi bi-circle"></i><span>Add posts</span>
             </a>
           </li>
@@ -66,7 +66,7 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#roles-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span>Roles</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="fa-solid fa-users-viewfinder"></i><span>Roles</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="roles-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -83,7 +83,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#permission-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span>Permissions</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="fa-solid fa-user-shield"></i><span>Permissions</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="permission-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -100,7 +100,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#user-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span>Users</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="fa-solid fa-users"></i><span>Users</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="user-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -119,7 +119,7 @@
       <li class="nav-heading">Pages</li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="profile">
+        <a class="nav-link collapsed" href="/admin/profile">
           <i class="bi bi-person"></i>
           <span>Profile</span>
         </a>
