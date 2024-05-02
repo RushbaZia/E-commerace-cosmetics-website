@@ -30,15 +30,15 @@
             </tr>
 
         </thead>
-        @foreach($product as $item)
+        @foreach($product as $product)
         <tbody style="border:2px solid black;">
             <tr>
-                <td>{{$item->id}}</td>
-                <td>{{$item->name}}</td>
+                <td>{{$product->id}}</td>
+                <td>{{$product->name}}</td>
                 <td>
-                    <img src="/storage/{{$item->image}}" height="50px" width="50px" class="img-fluid">
+                    <img src="/storage/{{$product->image}}" height="50px" width="50px" class="img-fluid">
                 </td>
-                <td>{{$item->quantity}}</td>
+                <td>{{$product->quantity}}</td>
                 <td>
                     <?php
                     $categories = $product->category;
@@ -47,14 +47,14 @@
                     {{$category->name}},
                     @endforeach
                 </td>
-                <td>{{$item->price}}</td>
-                <td>{{$item->details}}</td>
+                <td>{{$product->price}}</td>
+                <td>{{$product->details}}</td>
                 <td>
-                    <a href="{{route('products.edit', [$item->id])}}" class="btn btn-outline-success">
+                    <a href="{{route('products.edit', [$product->id])}}" class="btn btn-outline-success">
                         <i class="fa-solid fa-pen"></i>&nbsp;Edit</a>
                 </td>
                 <td>
-                    <form method="post" action="{{route('products.destroy', [$item->id])}}">
+                    <form method="post" action="{{route('products.destroy', [$product->id])}}">
                         @csrf
                         @method('delete')
                         <button class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i>&nbsp;Delete</button>
@@ -65,9 +65,7 @@
         </tbody>
         @endforeach
     </table>
-    <div>
-        {{$product->links('pagination::bootstrap-5')}}
-    </div>
+  
 </div>
 
 @endsection

@@ -34,9 +34,11 @@
                         </div>
                         <select class="js-example-basic-multiple form-select" name="categories[]" multiple="multiple">
 
-                            @foreach($category as $category)
-                            <option value="{{$category->id}}" @if(in_array($category->id,$category))selected @endif>{{$category->name}}</option>
+                            @foreach($categories as $item)
+                            <option value="{{$item->id}}" @if(in_array($item->id,$category))selected @endif>{{$item->name}}</option>
                             @endforeach
+
+                           
                         </select>
                     </div>
                 </div>

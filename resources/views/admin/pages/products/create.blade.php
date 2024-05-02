@@ -5,7 +5,7 @@
 </h3>
 
 <div class="container pt-3">
-    <form class="row g-3" method="post" action="{{route('products.store')}}" enctype="multipart/form-data">
+    <form class="row g-3" method="POST" action="{{route('products.store')}}" enctype="multipart/form-data">
         @csrf
         <div class="col-12 mb-4">
             <div class="input-group">
@@ -43,7 +43,7 @@
                             <i class="fa-solid fa-weight-scale"></i>&nbsp;&nbsp;
                             <label for="autoSizingInputGroup"><b>Category:</b></label>
                         </div>
-                        <select class="js-example-basic-multiple form-select form-control" name="category_id[]" multiple="multiple">
+                        <select class="js-example-basic-multiple form-select" name="category_id[]" multiple="multiple">
                             @foreach($category as $category)
                             <option value="{{$category->id}}">{{$category->name}}</option>
                             @endforeach
