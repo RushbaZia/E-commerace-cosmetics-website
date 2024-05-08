@@ -13,6 +13,8 @@
                     </ul>
                 </div>
             </div>
+            <div class="col-md-1">
+            </div>
             <div class="col-md-4">
                 <div class="ftco-footer-widget mb-4">
                     <h2 class="ftco-heading-2">Recent Blog</h2>
@@ -40,22 +42,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-2">
-                <div class="ftco-footer-widget mb-4 ml-md-4">
-                    <h2 class="ftco-heading-2">Spa Center</h2>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="py-2 d-block">Body Care</a></li>
-                        <li><a href="#" class="py-2 d-block">Massage</a></li>
-                        <li><a href="#" class="py-2 d-block">Hydrotherapy</a></li>
-                        <li><a href="#" class="py-2 d-block">Yoga</a></li>
-                        <li><a href="#" class="py-2 d-block">Sauna</a></li>
-                        <li><a href="#" class="py-2 d-block">Aquazone</a></li>
-                    </ul>
-                </div>
+            <div class="col-md-1">
             </div>
             <div class="col-md-3">
                 <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">Have a Questions?</h2>
+                    <h2 class="ftco-heading-2">Have a Question?</h2>
                     <div class="block-23 mb-3">
                         <ul>
                             <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
@@ -72,7 +63,7 @@
                 <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     Copyright &copy;<script>
                         document.write(new Date().getFullYear());
-                    </script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                    </script> | All rights reserved </a>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
             </div>
         </div>

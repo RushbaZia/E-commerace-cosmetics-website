@@ -2,9 +2,7 @@
 
 @section('content')
 
-
-
-    <div class="pagetitle">
+   <div class="pagetitle">
       <h1>Contact</h1>
       <nav>
         <ol class="breadcrumb">

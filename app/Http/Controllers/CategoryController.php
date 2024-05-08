@@ -40,7 +40,8 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        $category = Category::all();
+        return view('admin.dashboard', compact('category'));
     }
 
     /**

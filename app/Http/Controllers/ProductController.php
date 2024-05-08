@@ -36,15 +36,14 @@ class ProductController extends Controller
         
         if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
-            $filePath = 'uploads/' . $filename;
-
-            // Store the file
-            Storage::disk('public')->put($filePath, file_get_contents($file));
-
-            $product["image"] = "$filePath";
+            $extenstion = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extenstion;
+            $request->file('image')->storeAs('public/upload', $filename);
+            $product->image = $filename;
         }
+        $product->image = "upload/$filename";
 
+        $product->save();
         $product->category()->attach($request->category_id);
 
         return redirect()->route('products.index')->with('status', 'Product added Successfully');
@@ -56,7 +55,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         $category = Category::find($product);
-        return view('admin.pages.products.show', compact('product', 'category'));
+        return view('client.pages.shop', compact('product', 'category'));
     }
 
     /**
@@ -75,15 +74,15 @@ class ProductController extends Controller
     {
         $product->update($request->except('_token'));
         if ($request->hasFile('image')) {
-            Storage::disk('public')->delete($product->image);
             $file = $request->file('image');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
-            $filePath = 'uploads/visitors/' . $filename;
-            Storage::disk('public')->put($filePath, file_get_contents($file));
-            $product["image"] = "$filePath";
-        } else {
-            unset($input['image']);
+            $extenstion = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extenstion;
+            $request->file('image')->storeAs('public/upload', $filename);
+            $product->image = $filename;
         }
+        $product->image = "upload/$filename";
+
+        $product->update();
         $product->category()->sync($request->category_id);
         return redirect()->route('products.index');
     }

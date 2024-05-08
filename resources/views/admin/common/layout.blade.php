@@ -9,7 +9,7 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
   <link rel="icon" type="image/png" href="{{asset('client/images/favicon.png')}}">
-  
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
@@ -30,6 +30,8 @@
   <link href="{{asset('admin/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
   <link href="{{asset('admin/vendor/simple-datatables/style.css')}}" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <link href="https://cdn.datatables.net/v/dt/dt-2.0.6/datatables.min.css" rel="stylesheet">
+
   <!-- Template Main CSS File -->
   <link href="{{asset('admin/css/style.css')}}" rel="stylesheet">
 
@@ -64,6 +66,7 @@
 
   <!-- Vendor JS Files -->
   <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+
   <script src="{{asset('admin/vendor/apexcharts/apexcharts.min.js')}}"></script>
   <script src="{{asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{asset('admin/vendor/chart.js/chart.umd.js')}}"></script>
@@ -80,6 +83,7 @@
       $('.js-example-basic-multiple').select2();
     });
   </script>
+  <script src="https://cdn.datatables.net/v/dt/dt-2.0.6/datatables.min.js"></script>
 </body>
 
 </html>

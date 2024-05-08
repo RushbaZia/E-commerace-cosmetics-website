@@ -8,8 +8,28 @@
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
-      </li><!-- End Dashboard Nav -->
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#banner-nav" data-bs-toggle="collapse" href="#">
+        <i class="fa-regular fa-image"></i><span>Banners</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="banner-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="#">
+              <i class="bi bi-circle"></i><span>Banner</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bi bi-circle"></i><span>Create</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <!-- End Dashboard Nav -->
 
+      <li class="nav-heading">Shop</li>
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-menu-button-wide"></i><span>Products</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -26,11 +46,11 @@
             </a>
           </li>
         </ul>
-      </li><!-- End Forms Nav -->
-
+      </li>
+     
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-bar-chart"></i><span>Categories</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="fa-solid fa-list"></i><span>Categories</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -44,12 +64,32 @@
             </a>
           </li>
         </ul>
-      </li><!-- End Charts Nav -->
+      </li>
+   
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" data-bs-target="#shipping-nav" data-bs-toggle="collapse" href="#">
+        <i class="fa-solid fa-truck-fast"></i><span>Shipping</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="shipping-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="#">
+              <i class="bi bi-circle"></i><span>Shipping</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bi bi-circle"></i><span>Create</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-heading">Blog Posts</li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#posts-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-layout-text-window-reverse"></i><span>Posts</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="posts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="{{route('posts.index')}}">
               <i class="bi bi-circle"></i><span>Posts</span>
@@ -61,12 +101,35 @@
             </a>
           </li>
         </ul>
-      </li><!-- End Tables Nav -->
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#tag-nav" data-bs-toggle="collapse" href="#">
+        <i class="fa-solid fa-hashtag"></i><span>Tags</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="tag-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="#">
+              <i class="bi bi-circle"></i><span>Tags</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bi bi-circle"></i><span>Create</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#comment-nav" data-bs-toggle="collapse" href="#">
+          <i class="fa-solid fa-pen"></i><span>Comments</span>
+        </a>
+      </li>
+      
       <li class="nav-heading">Roles/Permissions</li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#roles-nav" data-bs-toggle="collapse" href="#">
-        <i class="fa-solid fa-users-viewfinder"></i><span>Roles</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="fa-solid fa-users-viewfinder"></i><span>Roles</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="roles-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>

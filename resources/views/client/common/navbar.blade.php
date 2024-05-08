@@ -9,10 +9,11 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active"><a href="dashboard" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="about" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="services" class="nav-link">Services</a></li>
-                <li class="nav-item"><a href="products" class="nav-link">Product</a></li>
                 <li class="nav-item"><a href="blog" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="shop" class="nav-link">Shop</a></li>
+                <li class="nav-item"><a href="checkout" class="nav-link">Checkout</a></li>
                 <li class="nav-item"><a href="contact" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="cart" class="nav-link"><i class="fa-solid fa-cart-shopping fs-4"></i></a></li>
             </ul>
         </div>
     </div>

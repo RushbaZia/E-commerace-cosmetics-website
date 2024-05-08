@@ -8161,6 +8161,17 @@ textarea.form-control {
       transform: translate(-50%, -50%); }
     .ftco-footer-social li a:hover {
       color: #fff; }
+/*---------------------
+  Map
+-----------------------*/
+
+.map {
+	height: 500px;
+}
+
+.map iframe {
+	width: 100%;
+}
 
 #map {
   height: 500px;
@@ -8205,7 +8216,7 @@ textarea.form-control {
       font-size: 28px; } }
 
 .heading-section.heading-section-white .subheading {
-  color: rgba(255, 255, 255, 0.9); }
+  color: pink; }
 
 .heading-section.heading-section-white h2 {
   font-size: 20px;

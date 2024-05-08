@@ -8,6 +8,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CheckOutController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -15,6 +16,7 @@ Route::get('/', function () {
 
 Route::resource('products', ProductController::class);
 Route::resource('category', CategoryController::class);
+Route::resource('post', PostController::class);
 
 Route::resource('permissions', PermissionController::class);
 Route::resource('roles', RoleController::class);
@@ -31,8 +33,14 @@ Route::get('/client/dashboard', function () {
 Route::get('/client/about', function () {
     return view('client.pages.about');
 });
+Route::get('/client/checkout', function () {
+    return view('client.pages.checkout');
+});
 Route::get('/client/blog', function () {
     return view('client.pages.blog');
+});
+Route::get('/client/shop', function () {
+    return view('client.pages.shop');
 });
 Route::get('/client/blogSingle', function () {
     return view('client.pages.blogSingle');
@@ -43,8 +51,8 @@ Route::get('/client/contact', function () {
 Route::get('/client/products', function () {
     return view('client.pages.products');
 });
-Route::get('/client/services', function () {
-    return view('client.pages.services');
+Route::get('/client/cart', function () {
+    return view('client.pages.cart');
 });
 
 
