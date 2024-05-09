@@ -17,6 +17,11 @@ class ProductController extends Controller
         $product = Product::with('category')->get();
         return view('admin.pages.products.index', compact('product'));
     }
+    public function productShop()
+    {
+        $products = Product::get();
+        return view('client.pages.shop', compact('products'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -55,7 +60,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         $category = Category::find($product);
-        return view('client.pages.shop', compact('product', 'category'));
+        return view('admin.pages.products.show', compact('product', 'category'));
     }
 
     /**
@@ -72,7 +77,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $product->update($request->except('_token'));
+        $product->update($request->except('_token','category_id'));
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $extenstion = $file->getClientOriginalExtension();

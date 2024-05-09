@@ -20,6 +20,7 @@
                 <tr>
                     <th>ID</th>
                     <th>NAME</th>
+                    <th>IMAGE</th>
                     <th>ACTION</th>
                 </tr>
             </thead>
@@ -28,6 +29,9 @@
                 <tr>
                     <td>{{ $category->id}}</td>
                     <td>{{ $category->name}}</td>
+                    <td>
+                    <img src="/storage/{{$category->image}}" height="50px" width="50px" class="img-fluid">
+                </td>
                     <td class="d-flex">
                         <a href="{{route('category.edit',[$category->id])}}" class="btn btn-success me-5">Edit</a>
                         <form method="post" action="{{route('category.destroy',[$category->id])}}">

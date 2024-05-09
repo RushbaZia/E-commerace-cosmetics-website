@@ -29,9 +29,17 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        Category::create([
-            'name' => $request->name
-        ]);
+        $category= Category::create($request->except('_token'));
+        if ($request->hasFile('image')) {
+            
+            $file = $request->file('image');
+            $extenstion = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extenstion;
+            $request->file('image')->storeAs('public/upload', $filename);
+            $category->image = $filename;
+        }
+        $category->image = "upload/$filename";
+        $category->save();
         return redirect()->route('category.index');
     }
 
@@ -43,6 +51,11 @@ class CategoryController extends Controller
         $category = Category::all();
         return view('admin.dashboard', compact('category'));
     }
+    // public function mainCategory()
+    // {
+    //     $categories = Category::get();
+    //     return view('client.dashboard', compact('categories'));
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -57,9 +70,16 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        $category->update([
-            'name' => $request->name
-        ]);
+        $category->update($request->except('_token'));
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $extenstion = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extenstion;
+            $request->file('image')->storeAs('public/upload', $filename);
+            $category->image = $filename;
+        }
+        $category->image = "upload/$filename";
+        $category->update();
         return redirect()->route('category.index')->with('status', 'Category Updated successfully');
     }
 
@@ -69,6 +89,6 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect()->back();
+        return redirect()->route('category.index');
     }
 }

@@ -169,50 +169,42 @@
        </li><!-- End Messages Nav -->
 
        <li class="nav-item dropdown pe-3">
-
-         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-           <img src="{{asset('admin/img/profile2.png')}}" alt="Profile" class="rounded-circle">
-           <span class="d-none d-md-block dropdown-toggle ps-2">Rushba</span>
-         </a><!-- End Profile Iamge Icon -->
-
-         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-           <li class="dropdown-header">
-             <h6>Rushba Zia</h6>
-             <span>Web Designer</span>
+         <ul class="navbar-nav ms-auto">
+           <!-- Authentication Links -->
+           @guest
+           @if (Route::has('login'))
+           <li class="nav-item">
+             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
            </li>
-           <li>
-             <hr class="dropdown-divider">
-           </li>
+           @endif
 
-           <li>
-             <a class="dropdown-item d-flex align-items-center" href="/admin/profile">
-               <i class="bi bi-person"></i>
-               <span>My Profile</span>
+           @if (Route::has('register'))
+           <li class="nav-item">
+             <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+           </li>
+           @endif
+           @else
+
+           <li class="nav-item dropdown">
+             <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+               <img src="{{asset('admin/img/profile2.png')}}" alt="Profile" class="rounded-circle">
+               <span class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::user()->name }}</span>
              </a>
-           </li>
-           <li>
-             <hr class="dropdown-divider">
-           </li>
 
-           <!-- <li>
-          <a class="dropdown-item d-flex align-items-center" href="#">
-            <i class="bi bi-box-arrow-right"></i>
-            <span>Sign Out</span>
-          </a>
-        </li> -->
-           <li>
-             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+               <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-               <i class="bi bi-box-arrow-right"></i> {{ __('Logout') }}
-             </a>
+                 {{ __('Logout') }}
+               </a>
 
-             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-               @csrf
-             </form>
+               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                 @csrf
+               </form>
+             </div>
            </li>
-         </ul><!-- End Profile Dropdown Items -->
+           @endguest
+         </ul>
        </li><!-- End Profile Nav -->
-
      </ul>
    </nav><!-- End Icons Navigation -->
 

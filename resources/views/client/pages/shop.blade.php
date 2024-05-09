@@ -38,433 +38,299 @@
 
     <style>
         body {
-            background: #FFD1DC;
-            font-family: "Open Sans", sans-serif;
+
+            background-color: #eee;
         }
 
-        h2 {
-            color: #000;
-            font-size: 26px;
-            font-weight: 300;
-            text-align: center;
-            text-transform: uppercase;
-            position: relative;
-            margin: 30px 0 60px;
+        .container {
+            width: 900px;
         }
 
-        h2::after {
-            content: "";
-            width: 100px;
-            position: absolute;
-            margin: 0 auto;
-            height: 4px;
-            border-radius: 1px;
-            background: #F88379;
-            left: 0;
-            right: 0;
-            bottom: -20px;
-        }
+        .card {
 
-        .carousel {
-            margin: 50px auto;
-            padding: 0 70px;
-        }
-
-        .carousel .item {
-            color: #747d89;
-            min-height: 325px;
-            text-align: center;
-            overflow: hidden;
-        }
-
-        .carousel .thumb-wrapper {
-            padding: 25px 15px;
-            background: #fff;
-            border-radius: 6px;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
-        }
-
-        .carousel .item .img-box {
-            height: 120px;
-            margin-bottom: 20px;
-            width: 100%;
-            position: relative;
-        }
-
-        .carousel .item img {
-            max-width: 100%;
-            max-height: 100%;
-            display: inline-block;
-            position: absolute;
-            bottom: 0;
-            margin: 0 auto;
-            left: 0;
-            right: 0;
-        }
-
-        .carousel .item h4 {
-            font-size: 18px;
-        }
-
-        .carousel .item h4,
-        .carousel .item p,
-        .carousel .item ul {
-            margin-bottom: 5px;
-        }
-
-        .carousel .thumb-content .btn {
-            color: #F88379;
-            font-size: 11px;
-            text-transform: uppercase;
-            font-weight: bold;
-            background: none;
-            border: 1px solid #FF4162;
-            padding: 6px 14px;
-            margin-top: 5px;
-            line-height: 16px;
-            border-radius: 20px;
-        }
-
-        .carousel .thumb-content .btn:hover,
-        .carousel .thumb-content .btn:focus {
-            color: #fff;
-            background: #FF4162;
-            box-shadow: none;
-        }
-
-        .carousel .thumb-content .btn i {
-            font-size: 14px;
-            font-weight: bold;
-            margin-left: 5px;
-        }
-
-        .carousel .item-price {
-            font-size: 13px;
-            padding: 2px 0;
-        }
-
-        .carousel .item-price strike {
-            opacity: 0.7;
-            margin-right: 5px;
-        }
-
-        .carousel-control-prev,
-        .carousel-control-next {
-            height: 44px;
-            width: 40px;
-            background: 	#F88379;
-            margin: auto 0;
-            border-radius: 4px;
-            opacity: 0.8;
-        }
-
-        .carousel-control-prev:hover,
-        .carousel-control-next:hover {
-            background: #FF4162;
-            opacity: 1;
-        }
-
-        .carousel-control-prev i,
-        .carousel-control-next i {
-            font-size: 36px;
-            position: absolute;
-            top: 50%;
-            display: inline-block;
-            margin: -19px 0 0 0;
-            z-index: 5;
-            left: 0;
-            right: 0;
-            color: #fff;
-            text-shadow: none;
-            font-weight: bold;
-        }
-
-        .carousel-control-prev i {
-            margin-left: -2px;
-        }
-
-        .carousel-control-next i {
-            margin-right: -4px;
-        }
-
-        .carousel-indicators {
-            bottom: -50px;
-        }
-
-        .carousel-indicators li,
-        .carousel-indicators li.active {
-            width: 10px;
-            height: 10px;
-            margin: 4px;
-            border-radius: 50%;
+            background-color: #fff;
             border: none;
+            border-radius: 10px;
+            width: 190px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
         }
 
-        .carousel-indicators li {
-            background: rgba(0, 0, 0, 0.2);
+        .image-container {
+
+            position: relative;
         }
 
-        .carousel-indicators li.active {
-            background: rgba(0, 0, 0, 0.6);
+        .thumbnail-image {
+            border-radius: 10px !important;
         }
 
-        .carousel .wish-icon {
+
+        .discount {
+
+            background-color: red;
+            padding-top: 1px;
+            padding-bottom: 1px;
+            padding-left: 4px;
+            padding-right: 4px;
+            font-size: 10px;
+            border-radius: 6px;
+            color: #fff;
+        }
+
+        .wishlist {
+
+            height: 25px;
+            width: 25px;
+            background-color: #eee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .first {
+
             position: absolute;
-            right: 10px;
-            top: 10px;
-            z-index: 99;
-            cursor: pointer;
-            font-size: 16px;
-            color: #abb0b8;
+            width: 100%;
+            padding: 9px;
         }
 
-        .carousel .wish-icon .fa-heart {
-            color: #ff6161;
+
+        .dress-name {
+            font-size: 13px;
+            font-weight: bold;
+            width: 75%;
         }
 
-        .star-rating li {
-            padding: 0;
+
+        .new-price {
+            font-size: 13px;
+            font-weight: bold;
+            color: red;
+
         }
 
-        .star-rating i {
+        .old-price {
+            font-size: 8px;
+            font-weight: bold;
+            color: grey;
+        }
+
+
+        .btn {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            padding: 3px;
+        }
+
+        .creme {
+            background-color: #fff;
+            border: 2px solid grey;
+
+
+        }
+
+        .creme:hover {
+            border: 3px solid grey;
+        }
+
+        .creme:focus {
+            background-color: grey;
+
+        }
+
+
+        .red {
+            background-color: #fff;
+            border: 2px solid red;
+
+        }
+
+
+        .red:hover {
+            border: 3px solid red;
+        }
+
+        .red:focus {
+            background-color: red;
+        }
+
+
+
+        .blue {
+            background-color: #fff;
+            border: 2px solid #40C4FF;
+        }
+
+        .blue:hover {
+            border: 3px solid #40C4FF;
+        }
+
+        .blue:focus {
+            background-color: #40C4FF;
+        }
+
+        .darkblue {
+            background-color: #fff;
+            border: 2px solid #01579B;
+        }
+
+        .darkblue:hover {
+            border: 3px solid #01579B;
+        }
+
+        .darkblue:focus {
+            background-color: #01579B;
+        }
+
+        .yellow {
+            background-color: #fff;
+            border: 2px solid #FFCA28;
+        }
+
+        .yellow:hover {
+            border-radius: 3px solid #FFCA28;
+        }
+
+        .yellow:focus {
+            background-color: #FFCA28;
+        }
+
+
+        .item-size {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #fff;
+            border: 1px solid grey;
+            color: grey;
+            font-size: 10px;
+            text-align: center;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+        }
+
+
+        .rating-star {
+            font-size: 10px !important;
+        }
+
+        .rating-number {
+            font-size: 10px;
+            color: grey;
+
+        }
+
+        .buy {
+            font-size: 12px;
+            color: purple;
+            font-weight: 500;
+        }
+
+        .voutchers {
+            background-color: #fff;
+            border: none;
+            border-radius: 10px;
+            width: 190px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            overflow: hidden;
+
+        }
+
+        .voutcher-divider {
+
+            display: flex;
+
+        }
+
+        .voutcher-left {
+            width: 60%
+        }
+
+        .voutcher-name {
+            color: grey;
+            font-size: 9px;
+            font-weight: 500;
+        }
+
+        .voutcher-code {
+            color: red;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .voutcher-right {
+            width: 40%;
+            background-color: purple;
+            color: #fff;
+        }
+
+        .discount-percent {
+            font-size: 12px;
+            font-weight: bold;
+            position: relative;
+            top: 5px;
+        }
+
+        .off {
             font-size: 14px;
-            color: #ffc000;
+            position: relative;
+            bottom: 5px;
         }
     </style>
-    <script>
-        $(document).ready(function() {
-            $(".wish-icon i").click(function() {
-                $(this).toggleClass("fa-heart fa-heart-o");
-            });
-        });
-    </script>
 </head>
 
 <body>
-    
+
     <!-- NAVBAR -->
     @include('client.common.navbar')
 
     <!-- SECTIONS -->
-    <div class="container-xl">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Featured <b>Products</b></h2>
-                <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
-                    <!-- Carousel indicators -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#myCarousel" data-slide-to="1"></li>
-                        <li data-target="#myCarousel" data-slide-to="2"></li>
-                    </ol>
-                    <!-- Wrapper for carousel items -->
-                    <div class="carousel-inner">
-                        <div class="item carousel-item active">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <div class="thumb-wrapper">
-                                        <span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-                                        <div class="img-box">
-                                            <img src="{{$product->image}}" class="img-fluid" alt>
-                                        </div>
-                                        <div class="thumb-content">
-                                            <h4>{{$product->name}}</h4>
-                                            <div class="star-rating">
-                                                <ul class="list-inline">
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-                                                </ul>
-                                            </div>
-                                            <p class="item-price"><strike>$400.00</strike> <b>$369.00</b></p>
-                                            <a href="cart" class="btn btn-danger">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="thumb-wrapper">
-                                        <span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-                                        <div class="img-box">
-                                            <img src="{{asset('client/images/image_4.jpg')}}" class="img-fluid" alt="Headphone">
-                                        </div>
-                                        <div class="thumb-content">
-                                            <h4>Sony Headphone</h4>
-                                            <div class="star-rating">
-                                                <ul class="list-inline">
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-                                                </ul>
-                                            </div>
-                                            <p class="item-price"><strike>$25.00</strike> <b>$23.99</b></p>
-                                            <a href="cart" class="btn btn-danger">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="thumb-wrapper">
-                                        <span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-                                        <div class="img-box">
-                                            <img src="{{asset('client/images/image_5.jpg')}}" class="img-fluid" alt="Macbook">
-                                        </div>
-                                        <div class="thumb-content">
-                                            <h4>Macbook Air</h4>
-                                            <div class="star-rating">
-                                                <ul class="list-inline">
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
-                                                </ul>
-                                            </div>
-                                            <p class="item-price"><strike>$899.00</strike> <b>$649.00</b></p>
-                                            <a href="cart" class="btn btn-danger">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="thumb-wrapper">
-                                        <span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-                                        <div class="img-box">
-                                            <img src="{{asset('client/images/image_6.jpg')}}" class="img-fluid" alt="Nikon">
-                                        </div>
-                                        <div class="thumb-content">
-                                            <h4>Nikon DSLR</h4>
-                                            <div class="star-rating">
-                                                <ul class="list-inline">
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-                                                </ul>
-                                            </div>
-                                            <p class="item-price"><strike>$315.00</strike> <b>$250.00</b></p>
-                                            <a href="#" class="btn btn-danger">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
+    <div class="container mt-5">
+
+
+        <div class="row ">
+            @foreach($products as $product)
+            <div class="col-md-3 mb-5">
+                <div class="card">
+                    <div class="image-container">
+                        <div class="first">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="discount">-25%</span>
+                                <span class="wishlist"><i class="fa fa-heart-o"></i></span>
                             </div>
                         </div>
-                        <div class="item carousel-item">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <div class="thumb-wrapper">
-                                        <span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-                                        <div class="img-box">
-                                            <img src="{{asset('client/images/image_1.jpg')}}" class="img-fluid" alt="Play Station">
-                                        </div>
-                                        <div class="thumb-content">
-                                            <h4>Sony Play Station</h4>
-                                            <p class="item-price"><strike>$289.00</strike>
-                                                <span>$269.00</span>
-                                            </p>
-                                            <div class="star-rating">
-                                                <ul class="list-inline">
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-                                                </ul>
-                                            </div>
-                                            <a href="#" class="btn btn-danger">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="thumb-wrapper">
-                                        <span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-                                        <div class="img-box">
-                                            <img src="{{asset('client/images/image_5.jpg')}}" class="img-fluid" alt="Macbook">
-                                        </div>
-                                        <div class="thumb-content">
-                                            <h4>Macbook Pro</h4>
-                                            <p class="item-price"><strike>$1099.00</strike>
-                                                <span>$869.00</span>
-                                            </p>
-                                            <div class="star-rating">
-                                                <ul class="list-inline">
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
-                                                </ul>
-                                            </div>
-                                            <a href="#" class="btn btn-danger">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="thumb-wrapper">
-                                        <span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-                                        <div class="img-box">
-                                            <img src="{{asset('client/images/image_3.jpg')}}" class="img-fluid" alt="Speaker">
-                                        </div>
-                                        <div class="thumb-content">
-                                            <h4>Bose Speaker</h4>
-                                            <p class="item-price"><strike>$109.00</strike>
-                                                <span>$99.00</span>
-                                            </p>
-                                            <div class="star-rating">
-                                                <ul class="list-inline">
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-                                                </ul>
-                                            </div>
-                                            <a href="#" class="btn btn-danger">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="thumb-wrapper">
-                                        <span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-                                        <div class="img-box">
-                                            <img src="{{asset('client/images/image_4.jpg')}}" class="img-fluid" alt="Galaxy">
-                                        </div>
-                                        <div class="thumb-content">
-                                            <h4>Samsung Galaxy S8</h4>
-                                            <p class="item-price"><strike>$599.00</strike>
-                                                <span>$569.00</span>
-                                            </p>
-                                            <div class="star-rating">
-                                                <ul class="list-inline">
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                    <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
-                                                </ul>
-                                            </div>
-                                            <a href="#" class="btn btn-danger">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                </div>
+                        <img src="/storage/{{$product->image}}" class="img-fluid rounded thumbnail-image">
+                    </div>
+                    <div class="product-detail-container p-2">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="dress-name">{{$product->name}}</h5>
+                            <div class="d-flex flex-column mb-2">
+                                <span class="new-price">${{$product->price}}</span>
+                                <small class="old-price text-right">Left: {{$product->quantity}} </small>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center pt-1">
+                            <div>{{$product->details}} </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center pt-1">
+                            <div>
+                                <i class="fa fa-star-o rating-star"></i>
+                                <span class="rating-number">4.8</span>
                             </div>
                         </div>
                     </div>
-                    <!-- Carousel controls -->
-                    <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                    <a class="carousel-control-next" href="#myCarousel" data-slide="next">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
                 </div>
             </div>
+            @endforeach
         </div>
     </div>
+
+
     <!-- FOOTER -->
     @include('client.common.footer')
 

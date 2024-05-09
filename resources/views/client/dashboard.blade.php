@@ -29,33 +29,20 @@
 <section class="ftco-section">
     <div class="container">
         <div class="row">
+            @foreach($categories as $category)
             <div class="col-md-4 ftco-animate">
                 <div class="media d-block text-center block-6 services">
-                    <div class="icon d-flex mb-3"><span class="flaticon-facial-treatment"></span></div>
+                        <img src="/storage/{{$category->image}}" class="img-fluid rounded thumbnail-image">
+                    
                     <div class="media-body">
-                        <h3 class="heading">Skin &amp; Beauty Care</h3>
+                        <h3 class="heading">{{$category->name}}</h3>
                         <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 ftco-animate">
-                <div class="media d-block text-center block-6 services">
-                    <div class="icon d-flex mb-3"><span class="flaticon-cosmetics"></span></div>
-                    <div class="media-body">
-                        <h3 class="heading">Makeup Pro</h3>
-                        <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 ftco-animate">
-                <div class="media d-block text-center block-6 services">
-                    <div class="icon d-flex mb-3"><span class="flaticon-curl"></span></div>
-                    <div class="media-body">
-                        <h3 class="heading">Hair Style</h3>
-                        <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
+
+
         </div>
     </div>
 </section>
@@ -115,53 +102,6 @@
                         <div class="text">
                             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- SECTION#3(DISCOUNT) -->
-<section class="ftco-section ftco-discount img" style="background-image: url(images/bg_2.jpg);">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row justify-content-end">
-            <div class="col-md-5 discount ftco-animate">
-                <h3>Save up to 25% Off</h3>
-                <h2 class="mb-4">Student Discount</h2>
-                <p class="mb-4">Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-                <p><a href="#" class="btn btn-white btn-outline-white px-4 py-3">Book Now</a></p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- SECTION#5(COSMETIC'S COMPANIES) -->
-<section class="ftco-partner bg-light">
-    <div class="container">
-        <div class="row partner justify-content-center">
-            <div class="col-md-10">
-                <div class="row">
-                    <div class="col-md-3 ftco-animate">
-                        <a href="#" class="partner-entry">
-                            <img src="images/partner-1.jpg" class="img-fluid" alt="Colorlib template">
-                        </a>
-                    </div>
-                    <div class="col-md-3 ftco-animate">
-                        <a href="#" class="partner-entry">
-                            <img src="images/partner-2.jpg" class="img-fluid" alt="Colorlib template">
-                        </a>
-                    </div>
-                    <div class="col-md-3 ftco-animate">
-                        <a href="#" class="partner-entry">
-                            <img src="images/partner-3.jpg" class="img-fluid" alt="Colorlib template">
-                        </a>
-                    </div>
-                    <div class="col-md-3 ftco-animate">
-                        <a href="#" class="partner-entry">
-                            <img src="images/partner-4.jpg" class="img-fluid" alt="Colorlib template">
-                        </a>
                     </div>
                 </div>
             </div>
@@ -299,7 +239,7 @@
 <!-- SECTION#1(BLOGS) -->
 <section class="ftco-section">
     <div class="container">
-        <div class="row justify-content-center mb-5 pb-3">
+        <div class="row justify-content-center">
             <div class="col-md-7 heading-section ftco-animate text-center">
                 <h2 class="mb-4">Recent from blog</h2>
                 <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
@@ -355,58 +295,33 @@
     </div>
 </section>
 
-<!-- SECTION#1(BOOK APPOINTMENT) -->
-<section class="ftco-section ftco-appointment">
-    <div class="overlay"></div>
+<!-- SECTION#5(COSMETIC'S COMPANIES) -->
+<section class="ftco-partner bg-light">
     <div class="container">
-        <div class="row d-md-flex align-items-center">
-            <div class="col-md-2"></div>
-            <div class="col-md-4 d-flex align-self-stretch ftco-animate">
-                <div class="appointment-info text-center p-5">
-                    <div class="mb-4">
-                        <h3 class="mb-3">Address</h3>
-                        <p> 203 Fake St. Mountain View, San Francisco, California, USA</p>
+        <div class="row partner justify-content-center">
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-3 ftco-animate">
+                        <a href="#" class="partner-entry">
+                            <img src="images/partner-1.jpg" class="img-fluid" alt="Colorlib template">
+                        </a>
                     </div>
-                    <div class="mb-4">
-                        <h3 class="mb-3">Phone</h3>
-                        <p class="day"><strong>000 123 456</strong> or <strong>000 987 654</strong></p>
+                    <div class="col-md-3 ftco-animate">
+                        <a href="#" class="partner-entry">
+                            <img src="images/partner-2.jpg" class="img-fluid" alt="Colorlib template">
+                        </a>
                     </div>
-                    <div>
-                        <h3 class="mb-3">Opening Hours</h3>
-                        <p class="day"><strong>Monday - Friday</strong></p>
-                        <span>08:00am - 09:00pm</span>
+                    <div class="col-md-3 ftco-animate">
+                        <a href="#" class="partner-entry">
+                            <img src="images/partner-3.jpg" class="img-fluid" alt="Colorlib template">
+                        </a>
+                    </div>
+                    <div class="col-md-3 ftco-animate">
+                        <a href="#" class="partner-entry">
+                            <img src="images/partner-4.jpg" class="img-fluid" alt="Colorlib template">
+                        </a>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6 appointment pl-md-5 ftco-animate">
-                <h3 class="mb-3">Appointments</h3>
-                <form action="#" class="appointment-form">
-                    <div class="row form-group d-flex">
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="First Name">
-                        </div>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="Last Name">
-                        </div>
-                    </div>
-                    <div class="row form-group d-flex">
-                        <div class="col-md-6">
-                            <div class="input-wrap">
-                                <div class="icon"><span class="ion-md-calendar"></span></div>
-                                <input type="text" id="appointment_date" class="form-control" placeholder="Date">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="Phone">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="" id="" cols="30" rows="3" class="form-control" placeholder="Message"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" value="Order" class="btn btn-white btn-outline-white py-3 px-4">
-                    </div>
-                </form>
             </div>
         </div>
     </div>

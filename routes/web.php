@@ -8,27 +8,34 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\CheckOutController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\AdminController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::group(['middleware'=>'auth'], function () {
+    Route::resource('permissions', PermissionController::class);
+    Route::resource('roles', RoleController::class);
+    Route::get('roles/{id}/givePermissions', [RoleController::class, 'addPermissionToRole'])->name('roles.givePermissions');
+    Route::put('roles/{id}/givePermissions', [RoleController::class, 'givePermissionToRole']);
+    Route::resource('users', UserController::class);
+    Route::get('/admin/dashboard', [AdminController::class, 'numberCount'])->name('adminDashboard');
+});
+
+
+
 Route::resource('products', ProductController::class);
+Route::get('/client/productShop', [ProductController::class, 'productShop'])->name('productShop');
+// Route::get('/mainCategory', [CategoryController::class, 'mainCategory'])->name('mainCategory');
 Route::resource('category', CategoryController::class);
-Route::resource('post', PostController::class);
-
-Route::resource('permissions', PermissionController::class);
-Route::resource('roles', RoleController::class);
-Route::get('roles/{id}/givePermissions', [RoleController::class, 'addPermissionToRole'])->name('roles.givePermissions');
-Route::put('roles/{id}/givePermissions', [RoleController::class, 'givePermissionToRole']);
-Route::resource('users', UserController::class);
 Route::resource('posts', PostController::class);
+Route::get('/client/dashboard', [ClientController::class, 'home'])->name('clientDashboard');
 
 
-Route::get('/client/dashboard', function () {
-    return view('client.dashboard');
-})->name('clientDashboard');
+
 
 Route::get('/client/about', function () {
     return view('client.pages.about');
@@ -55,10 +62,6 @@ Route::get('/client/cart', function () {
     return view('client.pages.cart');
 });
 
-
-Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard');
-});
 Route::get('/admin/profile', function () {
     return view('admin.pages.profile');
 });

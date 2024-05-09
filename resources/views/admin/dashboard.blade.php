@@ -32,7 +32,7 @@
                   <i class="fa-solid fa-list"></i>
                 </div>
                 <div class="ps-3">
-                  <h6>345</h6>
+                  <h6>{{count($categories)}}</h6>
                 </div>
               </div>
             </div>
@@ -52,7 +52,7 @@
                   <i class="fa-solid fa-cubes"></i>
                 </div>
                 <div class="ps-3">
-                  <h6>264</h6>
+                  <h6>{{count($products)}}</h6>
 
                 </div>
               </div>

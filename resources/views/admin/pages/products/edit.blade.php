@@ -32,13 +32,13 @@
                             <i class="fa-solid fa-weight-scale"></i>&nbsp;&nbsp;
                             <label for="autoSizingInputGroup"><b>Category:</b></label>
                         </div>
-                        <select class="js-example-basic-multiple form-select" name="categories[]" multiple="multiple">
+                        <select class="js-example-basic-multiple form-select" name="category_id[]" multiple="multiple" value="{{old('category_id',$product->category)}}">
 
                             @foreach($categories as $item)
-                            <option value="{{$item->id}}" @if(in_array($item->id,$category))selected @endif>{{$item->name}}</option>
+                            <option value="{{$item->id}}" @if(in_array($item->id,$category))selected @endif>
+                                {{$item->name}}
+                            </option>
                             @endforeach
-
-                           
                         </select>
                     </div>
                 </div>

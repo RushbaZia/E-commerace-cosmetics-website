@@ -10,11 +10,15 @@
                     </h4>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{route('category.store')}}">
+                    <form method="POST" action="{{route('category.store')}}"enctype="multipart/form-data">
                         @csrf
                         <div class=" col-md-12 form-floating">
                             <input type="text" class="form-control" id="floatingInput" placeholder="Category Name" name="name">
                             <label for="floatingInput">Category Name</label>
+                        </div>
+                        <div class="col-3 mt-2">
+                            <!-- <label>Upload File/Image</label> -->
+                            <input type="file" class="form-control" name="image">
                         </div>
                         <div class="mt-3">
                             <button class="btn btn-primary" type="submit">Save</button>
