@@ -46,6 +46,10 @@ class RoleController extends Controller
         ]);
         return redirect()->route('roles.index')->with('status', 'Role Created successfully');
     }
+    public function show(Role $role)
+    {
+        //
+    }
 
     /**
      * Display the specified resource.

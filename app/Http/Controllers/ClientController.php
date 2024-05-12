@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use App\Models\AboutPage;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -14,16 +15,18 @@ class ClientController extends Controller
     public function home()
     {
         $categories = Category::get();
-        return view('client.dashboard', compact('categories'));
+        $about = AboutPage::get();
+        return view('client.dashboard', compact('categories','about'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
+    // public function about()
+    // {
+    //     return view('client.pages.about');
+        
+    // }
 
     /**
      * Store a newly created resource in storage.

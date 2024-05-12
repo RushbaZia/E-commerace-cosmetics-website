@@ -47,16 +47,18 @@
                                 </td>
                                 <td class="d-flex">
 
+                                    @can('update-user')
                                     <a href="{{route('users.edit',[$user->id])}}" class="btn btn-success me-5">Edit</a>
-
-
+                                    @endcan
+                                    
+                                    @can('delete-user')
 
                                     <form method="post" action="{{route('users.destroy',[$user->id])}}">
                                         @csrf
                                         @method('delete')
                                         <button class="btn btn-danger">Delete</button>
                                     </form>
-
+                                    @endcan
                                 </td>
                             </tr>
                         </tbody>

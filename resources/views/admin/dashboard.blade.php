@@ -14,11 +14,10 @@
 
 <section class="section dashboard">
   <div class="row">
-
+    @if (Auth::user()->hasRole('Admin|Manager'))
     <!-- Left side columns -->
     <div class="col-lg-12">
       <div class="row">
-
         <!-- Sales Card -->
         <div class="col-xxl-4 col-md-4">
           <div class="card info-card sales-card">
@@ -119,7 +118,7 @@
       </div>
     </div>
     <div class="col-lg-3">
-      
+
       <div class="col-lg-12">
         <div class="card">
           <div class="card-body">
@@ -130,7 +129,7 @@
                 <i class="fa-solid fa-user-graduate"></i>
               </div>
               <div class="ps-3">
-                <h3>3</h3>
+                <h3></h3>
               </div>
             </div>
           </div>
@@ -146,13 +145,43 @@
                 <i class="fa-solid fa-user"></i>
               </div>
               <div class="ps-3">
-                <h3>50</h3>
+                <h3>45</h3>
               </div>
             </div>
           </div>
         </div>
       </div>
-
     </div>
+    @elseif(Auth::user()->hasRole('User'))
+    <div class="col-lg-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">S.N</th>
+            <th scope="col">ORDER NO.</th>
+            <th scope="col">NAME</th>
+            <th scope="col">EMAIL</th>
+            <th scope="col">QUANTITY</th>
+            <th scope="col">TOTAL AMOUNT</th>
+            <th scope="col">STATUS</th>
+            <th scope="col">ACTION</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            <td><i class="fa-solid fa-pen text-success pe-3"></i><i class="fa-solid fa-trash text-danger"></i></td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    @endif
 </section>
 @endsection

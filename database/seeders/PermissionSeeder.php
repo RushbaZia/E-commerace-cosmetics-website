@@ -34,6 +34,19 @@ class PermissionSeeder extends Seeder
             'view-category',
             'update-category',
             'delete-category',
+            'create-post',
+            'view-post',
+            'update-post',
+            'delete-post',
+            'create-tag',
+            'view-tag',
+            'update-tag',
+            'delete-tag',
+            'create-banner',
+            'view-banner',
+            'update-banner',
+            'delete-banner',
+
         ];
         foreach ($permissions as $permission) {
             Permission::create(['name' => $permission]);

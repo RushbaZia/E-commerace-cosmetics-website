@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use App\Models\Category;
 use App\Models\Product;
+
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -18,10 +19,7 @@ class AdminController extends Controller
         $products = Product::get();
         return view('admin.dashboard', compact('categories','products'));
     }
-    public function create()
-    {
-        
-    }
+  
 
     /**
      * Show the form for creating a new resource.

@@ -38,19 +38,20 @@
                                 <td>{{ $role->id}}</td>
                                 <td>{{ $role->name}}</td>
                                 <td class="d-flex">
+                                    @can('update-permission')
                                     <a href="{{route('roles.givePermissions',[$role->id])}}" class="btn btn-success me-5">Add/Edit Role Permission</a>
-
-                                    
+                                    @endcan
+                                    @can('update-role')
                                     <a href="{{route('roles.edit',[$role->id])}}" class="btn btn-success me-5">Edit</a>
-                                    
+                                    @endcan
 
-                                   
+                                    @can('delete-role')
                                     <form method="post" action="{{route('roles.destroy',[$role->id])}}">
                                         @csrf
                                         @method('delete')
                                         <button class="btn btn-danger">Delete</button>
                                     </form>
-                                    
+                                    @endcan
                                 </td>
                             </tr>
                         </tbody>

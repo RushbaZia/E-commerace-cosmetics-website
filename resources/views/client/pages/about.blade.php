@@ -38,64 +38,36 @@
 
 <section class="ftco-section bg-light">
     <div class="container">
+
         <div class="row justify-content-center mb-5 pb-3">
             <div class="col-md-7 heading-section ftco-animate text-center">
                 <h2 class="mb-4">Our Beauty Experts</h2>
                 <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
             </div>
         </div>
+        @if(session('status'))
+        <div class="alert alert-success mt-3">{{session('status')}}</div>
+        @endif
         <div class="row">
+            @foreach($about as $expert)
             <div class="col-lg-3 d-flex mb-sm-4 ftco-animate">
                 <div class="staff">
-                    <div class="img mb-4" style="background-image: url(images/person_1.jpg);"></div>
+                    <div class="img mb-4"><img src="/storage/{{$expert->image}}" class="img-fluid rounded-circle"></div>
                     <div class="info text-center">
-                        <h3><a href="teacher-single.html">Mellisa Smith</a></h3>
-                        <span class="position">Stylist</span>
+                        <h3><a href="teacher-single.html">{{$expert->name}}</a></h3>
+                        <span class="position">{{$expert->experts}}</span>
                         <div class="text">
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                            <p>{{$expert->details}}</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 d-flex mb-sm-4 ftco-animate">
-                <div class="staff">
-                    <div class="img mb-4" style="background-image: url(images/person_2.jpg);"></div>
-                    <div class="info text-center">
-                        <h3><a href="teacher-single.html">Marie Mush</a></h3>
-                        <span class="position">Fashionist</span>
-                        <div class="text">
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 d-flex mb-sm-4 ftco-animate">
-                <div class="staff">
-                    <div class="img mb-4" style="background-image: url(images/person_3.jpg);"></div>
-                    <div class="info text-center">
-                        <h3><a href="teacher-single.html">Ana Jacobson</a></h3>
-                        <span class="position">Makeup Stylist</span>
-                        <div class="text">
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 d-flex mb-sm-4 ftco-animate">
-                <div class="staff">
-                    <div class="img mb-4" style="background-image: url(images/person_4.jpg);"></div>
-                    <div class="info text-center">
-                        <h3><a href="teacher-single.html">Ivan Dorchsner</a></h3>
-                        <span class="position">Nail Specialist</span>
-                        <div class="text">
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
+
+
 <section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(images/bg_4.jpg);">
     <div class="overlay"></div>
     <div class="container">
@@ -107,15 +79,6 @@
                             <div class="text">
                                 <div class="icon"><span class="flaticon-flower"></span></div>
                                 <span>Makeup Over Done</span>
-                                <strong class="number" data-number="3500">0</strong>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-                        <div class="block-18 text-center">
-                            <div class="text">
-                                <div class="icon"><span class="flaticon-flower"></span></div>
-                                <span>Procedure</span>
                                 <strong class="number" data-number="1000">0</strong>
                             </div>
                         </div>
@@ -124,8 +87,8 @@
                         <div class="block-18 text-center">
                             <div class="text">
                                 <div class="icon"><span class="flaticon-flower"></span></div>
-                                <span>Happy Client</span>
-                                <strong class="number" data-number="3000">0</strong>
+                                <span>Hair Therapy</span>
+                                <strong class="number" data-number="1000">0</strong>
                             </div>
                         </div>
                     </div>
@@ -138,6 +101,16 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+                        <div class="block-18 text-center">
+                            <div class="text">
+                                <div class="icon"><span class="flaticon-flower"></span></div>
+                                <span>Happy Clients</span>
+                                <strong class="number" data-number="2000">0</strong>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

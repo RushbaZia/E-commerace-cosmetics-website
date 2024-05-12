@@ -4,7 +4,7 @@
    <div class="d-flex align-items-center justify-content-between">
      <a href="index.html" class="logo d-flex align-items-center">
        <img src="{{asset('admin/img/favicon.png')}}" alt="">
-       <span class="d-none d-lg-block">PrettyAdmin</span>
+       <span class="d-none d-lg-block">Pretty Admin</span>
      </a>
      <i class="bi bi-list toggle-sidebar-btn"></i>
    </div><!-- End Logo -->
@@ -190,17 +190,25 @@
                <img src="{{asset('admin/img/profile2.png')}}" alt="Profile" class="rounded-circle">
                <span class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::user()->name }}</span>
              </a>
-
-             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-               <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+             <ul class="dropdown-menu">
+               <li>
+                 <a class="dropdown-item d-flex align-items-center" href="/admin/profile">
+                   <i class="bi bi-person"></i>
+                   <span>My Profile</span>
+                 </a>
+               </li>
+               <li>
+                   <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                 {{ __('Logout') }}
-               </a>
+                     <i class="bi bi-box-arrow-right"></i>{{ __('Logout') }}
+                   </a>
 
-               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                 @csrf
-               </form>
-             </div>
+                   <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                     @csrf
+                   </form>
+               </li>
+             </ul>
+
            </li>
            @endguest
          </ul>

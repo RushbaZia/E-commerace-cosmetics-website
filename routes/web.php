@@ -10,13 +10,14 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AboutPageController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 
-Route::group(['middleware'=>'auth'], function () {
+Route::group(['middleware' => 'auth'], function () {
     Route::resource('permissions', PermissionController::class);
     Route::resource('roles', RoleController::class);
     Route::get('roles/{id}/givePermissions', [RoleController::class, 'addPermissionToRole'])->name('roles.givePermissions');
@@ -25,21 +26,20 @@ Route::group(['middleware'=>'auth'], function () {
     Route::get('/admin/dashboard', [AdminController::class, 'numberCount'])->name('adminDashboard');
 });
 
-
-
+// Route::get('/admin/dashboard', [AdminController::class, 'headerLogo']);
+// Route::get('/admin/userCount', [UserController::class, 'userCount'])->name('userCount');
 Route::resource('products', ProductController::class);
 Route::get('/client/productShop', [ProductController::class, 'productShop'])->name('productShop');
-// Route::get('/mainCategory', [CategoryController::class, 'mainCategory'])->name('mainCategory');
 Route::resource('category', CategoryController::class);
 Route::resource('posts', PostController::class);
 Route::get('/client/dashboard', [ClientController::class, 'home'])->name('clientDashboard');
+Route::resource('about', AboutPageController::class);
 
 
+// Route::get('/client/about', function () {
+//     return view('client.pages.about');
+// });
 
-
-Route::get('/client/about', function () {
-    return view('client.pages.about');
-});
 Route::get('/client/checkout', function () {
     return view('client.pages.checkout');
 });

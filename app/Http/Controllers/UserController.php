@@ -24,6 +24,11 @@ class UserController extends Controller
         $users = User::get();
         return view('admin.role-permission.user.index', compact('users'));
     }
+    // public function userCount()
+    // {
+    //     $users = User::get();
+    //     return view('admin.dashboard', compact('users'));
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -42,7 +47,7 @@ class UserController extends Controller
         $input['password'] = Hash::make($input['password']);
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
-        
+
         return redirect('/users')->with('status', 'User Created successfully');
     }
 

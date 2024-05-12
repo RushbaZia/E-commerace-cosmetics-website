@@ -290,9 +290,7 @@
     @include('client.common.navbar')
 
     <!-- SECTIONS -->
-    <div class="container mt-5">
-
-
+    <div class="container mt-5 mb-5">
         <div class="row ">
             @foreach($products as $product)
             <div class="col-md-3 mb-5">
@@ -328,6 +326,7 @@
             </div>
             @endforeach
         </div>
+        <center> <button class="loadMore" style="border:2px solid skyblue; background-color:aquamarine; cursor:pointer;"onclick="loadData()"><b>More Products</b><span class="spinner-border spinner-border-sm text-primary ms-3"></span></button></center>
     </div>
 
 
@@ -339,10 +338,23 @@
     <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
             <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
             <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
-        </svg></div>
+        </svg>
+    </div>
 
 
     <script src="{{ asset('client/js/jquery.min.js')}}"></script>
+    <!-- <script>
+        $(".col-md-3").slice(0, 4).show();
+        $(".loadMore").on("click", function() {
+
+            $(".col-md-3:hidden").slice(0, 4).show();
+            if ($(".col-md-3:hidden").length == 0) {
+                $(".loadMore").fadeOut();
+            }
+        })
+    </script> -->
+    <script
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
     <script src="{{ asset('client/js/jquery-migrate-3.0.1.min.js') }}"></script>
     <script src="{{ asset('client/js/popper.min.js') }}"></script>
 
