@@ -12,7 +12,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.post.index');
+        $post =Post::all();
+        return view('admin.pages.post.index', compact('post'));
     }
 
     /**
@@ -28,9 +29,20 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        
+       
+        $post= Post::create($request->all());
+        if ($request->hasFile('image')) {
+            
+            $file = $request->file('image');
+            $extenstion = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extenstion;
+            $request->file('image')->storeAs('public/upload', $filename);
+            $post->image = $filename;
+        }
+        $post->image = "upload/$filename";
+        $post->save();
+        return redirect()->route('posts.index')->with('status','Added sucessfully!');
     }
-
     /**
      * Display the specified resource.
      */
@@ -44,7 +56,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('admin.pages.post.edit', compact('post'));
     }
 
     /**
@@ -52,7 +64,18 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $post= Post::create($request->all());
+        if ($request->hasFile('image')) {
+            
+            $file = $request->file('image');
+            $extenstion = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extenstion;
+            $request->file('image')->storeAs('public/upload', $filename);
+            $post->image = $filename;
+        }
+        $post->image = "upload/$filename";
+        $post->update();
+        return redirect()->route('posts.index')->with('status','updated sucessfully!');
     }
 
     /**
@@ -60,6 +83,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('posts.index')->with('delete','Deleted sucessfully!');
     }
 }

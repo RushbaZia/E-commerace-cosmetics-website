@@ -8,9 +8,11 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AboutPageController;
+use App\Models\Tag;
 
 Route::get('/', function () {
     return view('welcome');
@@ -32,6 +34,7 @@ Route::resource('products', ProductController::class);
 Route::get('/client/productShop', [ProductController::class, 'productShop'])->name('productShop');
 Route::resource('category', CategoryController::class);
 Route::resource('posts', PostController::class);
+Route::resource('tags', TagController::class);
 Route::get('/client/dashboard', [ClientController::class, 'home'])->name('clientDashboard');
 Route::resource('about', AboutPageController::class);
 

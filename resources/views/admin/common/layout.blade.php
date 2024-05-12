@@ -56,6 +56,7 @@
   <main id="main" class="main">
     <!-- End Sidebar-->
     @yield('content')
+   
     <!-- End #main -->
   </main>
   <!-- ======= Footer ======= -->
@@ -66,7 +67,7 @@
 
   <!-- Vendor JS Files -->
   <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
-
+  
   <script src="{{asset('admin/vendor/apexcharts/apexcharts.min.js')}}"></script>
   <script src="{{asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{asset('admin/vendor/chart.js/chart.umd.js')}}"></script>

@@ -120,12 +120,12 @@
         </a>
         <ul id="tag-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="#">
+            <a href="{{route('tags.index')}}">
               <i class="bi bi-circle"></i><span>List</span>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="{{route('tags.create')}}">
               <i class="bi bi-circle"></i><span>Create</span>
             </a>
           </li>
