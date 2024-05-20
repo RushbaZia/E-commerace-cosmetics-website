@@ -12,9 +12,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Open+Sans">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <link rel="stylesheet" href="{{ asset('client/css/open-iconic-bootstrap.min.css') }}">
@@ -37,251 +37,98 @@
     <link rel="stylesheet" href="{{ asset('client/css/style.css') }}">
 
     <style>
-        body {
-
-            background-color: #eee;
-        }
-
-        .container {
-            width: 900px;
-        }
-
-        .card {
-
-            background-color: #fff;
-            border: none;
-            border-radius: 10px;
-            width: 190px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
-        }
-
-        .image-container {
-
+        .thumbnail {
             position: relative;
-        }
-
-        .thumbnail-image {
-            border-radius: 10px !important;
-        }
-
-
-        .discount {
-
-            background-color: red;
-            padding-top: 1px;
-            padding-bottom: 1px;
-            padding-left: 4px;
-            padding-right: 4px;
-            font-size: 10px;
-            border-radius: 6px;
-            color: #fff;
-        }
-
-        .wishlist {
-
-            height: 25px;
-            width: 25px;
-            background-color: #eee;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        }
-
-        .first {
-
-            position: absolute;
-            width: 100%;
-            padding: 9px;
+            padding: 0px;
+            margin-bottom: 20px;
         }
 
 
-        .dress-name {
-            font-size: 13px;
-            font-weight: bold;
-            width: 75%;
+        .thumbnail img {
+            width: 80%;
         }
 
-
-        .new-price {
-            font-size: 13px;
-            font-weight: bold;
-            color: red;
-
+        .thumbnail .caption {
+            margin: 7px;
         }
 
-        .old-price {
-            font-size: 8px;
-            font-weight: bold;
-            color: grey;
+        .main-section {
+            background-color: #F8F8F8;
         }
 
+        .dropdown {
+            float: right;
+            padding-right: 30px;
+        }
 
         .btn {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            padding: 3px;
+            border: 0px;
+            margin: 10px 0px;
+            box-shadow: none !important;
         }
 
-        .creme {
-            background-color: #fff;
-            border: 2px solid grey;
-
-
+        .dropdown .dropdown-menu {
+            padding: 20px;
+            top: 30px !important;
+            width: 350px !important;
+            left: -110px !important;
+            box-shadow: 0px 5px 30px black;
         }
 
-        .creme:hover {
-            border: 3px solid grey;
+        .total-header-section {
+            border-bottom: 1px solid #d2d2d2;
         }
 
-        .creme:focus {
-            background-color: grey;
-
+        .total-section p {
+            margin-bottom: 20px;
         }
 
-
-        .red {
-            background-color: #fff;
-            border: 2px solid red;
-
+        .cart-detail {
+            padding: 15px 0px;
         }
 
-
-        .red:hover {
-            border: 3px solid red;
+        .cart-detail-img img {
+            width: 100%;
+            height: 100%;
+            padding-left: 15px;
         }
 
-        .red:focus {
-            background-color: red;
-        }
-
-
-
-        .blue {
-            background-color: #fff;
-            border: 2px solid #40C4FF;
-        }
-
-        .blue:hover {
-            border: 3px solid #40C4FF;
-        }
-
-        .blue:focus {
-            background-color: #40C4FF;
-        }
-
-        .darkblue {
-            background-color: #fff;
-            border: 2px solid #01579B;
-        }
-
-        .darkblue:hover {
-            border: 3px solid #01579B;
-        }
-
-        .darkblue:focus {
-            background-color: #01579B;
-        }
-
-        .yellow {
-            background-color: #fff;
-            border: 2px solid #FFCA28;
-        }
-
-        .yellow:hover {
-            border-radius: 3px solid #FFCA28;
-        }
-
-        .yellow:focus {
-            background-color: #FFCA28;
-        }
-
-
-        .item-size {
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            background: #fff;
-            border: 1px solid grey;
-            color: grey;
-            font-size: 10px;
-            text-align: center;
-            align-items: center;
-            display: flex;
-            justify-content: center;
-        }
-
-
-        .rating-star {
-            font-size: 10px !important;
-        }
-
-        .rating-number {
-            font-size: 10px;
-            color: grey;
-
-        }
-
-        .buy {
-            font-size: 12px;
-            color: purple;
+        .cart-detail-product p {
+            margin: 0px;
+            color: #000;
             font-weight: 500;
         }
 
-        .voutchers {
-            background-color: #fff;
-            border: none;
-            border-radius: 10px;
-            width: 190px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            overflow: hidden;
-
-        }
-
-        .voutcher-divider {
-
-            display: flex;
-
-        }
-
-        .voutcher-left {
-            width: 60%
-        }
-
-        .voutcher-name {
-            color: grey;
-            font-size: 9px;
+        .cart-detail .price {
+            font-size: 12px;
+            margin-right: 10px;
             font-weight: 500;
         }
 
-        .voutcher-code {
-            color: red;
-            font-size: 11px;
-            font-weight: bold;
+        .cart-detail .count {
+            color: #C2C2DC;
         }
 
-        .voutcher-right {
-            width: 40%;
-            background-color: purple;
-            color: #fff;
+        .checkout {
+            border-top: 1px solid #d2d2d2;
+            padding-top: 15px;
         }
 
-        .discount-percent {
-            font-size: 12px;
-            font-weight: bold;
-            position: relative;
-            top: 5px;
+        .checkout .btn-primary {
+            border-radius: 50px;
+            /* height: 50px; */
         }
 
-        .off {
-            font-size: 14px;
-            position: relative;
-            bottom: 5px;
+        .dropdown-menu:before {
+            content: " ";
+            position: absolute;
+            top: -20px;
+            right: 50px;
+            border: 10px solid transparent;
+            border-bottom-color: #fff;
         }
     </style>
+
 </head>
 
 <body>
@@ -289,20 +136,67 @@
     <!-- NAVBAR -->
     @include('client.common.navbar')
 
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-12 main-section">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-info" data-toggle="dropdown">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <div class="row total-header-section">
+                            <div class="col-lg-6 col-sm-6 col-6">
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
+                            </div>
+                            @php $total = 0 @endphp
+                            @foreach((array) session('cart') as $id => $details)
+                            @php $total += $details['price'] * $details['quantity'] @endphp
+                            @endforeach
+                            <div class="col-lg-6 col-sm-6 col-6 total-section text-right">
+                                <p>Total: <span class="text-info">$ {{ $total }}</span></p>
+                            </div>
+                        </div>
+                        @if(session('cart'))
+                        @foreach(session('cart') as $id => $details)
+                        <div class="row cart-detail">
+                            <div class="col-lg-4 col-sm-4 col-4 cart-detail-img">
+                                <img src="{{ $details['image'] }}" />
+                            </div>
+                            <div class="col-lg-8 col-sm-8 col-8 cart-detail-product">
+                                <p>{{ $details['name'] }}</p>
+                                <span class="price text-info"> ${{ $details['price'] }}</span> <span class="count"> Quantity:{{ $details['quantity'] }}</span>
+                            </div>
+                        </div>
+                        @endforeach
+                        @endif
+                        <div class="row">
+                            <div class="col-lg-12 col-sm-12 col-12 text-center checkout">
+                                <a href="{{ route('cart') }}" class="btn btn-primary btn-block">View all</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+
+        @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+        @endif
+
+        @yield('content')
+    </div>
     <!-- SECTIONS -->
     <div class="container mt-5 mb-5">
         <div class="row ">
             @foreach($products as $product)
             <div class="col-md-3 mb-5">
-                <div class="card">
-                    <div class="image-container">
-                        <div class="first">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="discount">-25%</span>
-                                <span class="wishlist"><i class="fa fa-heart-o"></i></span>
-                            </div>
-                        </div>
-                        <img src="/storage/{{$product->image}}" class="img-fluid rounded thumbnail-image">
+                <div class="card" style="background-color: #fff; border: none; border-radius: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                    <div class="image-container" style="  border-radius: 10px; ">
+                        <img src="/storage/{{$product->image}}" class="img-fluid">
                     </div>
                     <div class="product-detail-container p-2">
                         <div class="d-flex justify-content-between align-items-center">
@@ -320,19 +214,23 @@
                                 <i class="fa fa-star-o rating-star"></i>
                                 <span class="rating-number">4.8</span>
                             </div>
+                            <div><a href="{{route('checkout.create')}}" class="btn btn-warning"><b>Buy +</b></a></div>
+                        </div>
+
+                        <div class="d-flex justify-content-center ">
+                            <p class="btn-holder"><a href="{{ route('add.to.cart', $product->id) }}" class="btn btn-danger ps-5 pe-5" role="button">Add to cart</a> </p>
                         </div>
                     </div>
                 </div>
             </div>
             @endforeach
         </div>
-        <center> <button class="loadMore" style="border:2px solid skyblue; background-color:aquamarine; cursor:pointer;"onclick="loadData()"><b>More Products</b><span class="spinner-border spinner-border-sm text-primary ms-3"></span></button></center>
+        <center> <button class="loadMore" style="border:2px solid skyblue; background-color:aquamarine; cursor:pointer;"><b>More Products</b><span class="spinner-border spinner-border-sm text-primary ms-3"></span></button></center>
     </div>
 
 
     <!-- FOOTER -->
     @include('client.common.footer')
-
 
     <!-- loader -->
     <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
@@ -340,7 +238,6 @@
             <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
         </svg>
     </div>
-
 
     <script src="{{ asset('client/js/jquery.min.js')}}"></script>
     <!-- <script>
@@ -353,9 +250,51 @@
             }
         })
     </script> -->
-    <script
+    <script type="text/javascript">
+        $(".update-cart").change(function(e) {
+            e.preventDefault();
+
+            var ele = $(this);
+
+            $.ajax({
+                url: "{{ route('update.cart')}}",
+                method: "patch",
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    id: ele.parents("tr").attr("data-id"),
+                    quantity: ele.parents("tr").find(".quantity").val()
+                },
+                success: function(response) {
+                    window.location.reload();
+                }
+            });
+        });
+
+        $(".remove-from-cart").click(function(e) {
+            e.preventDefault();
+
+            var ele = $(this);
+
+            if (confirm("Are you sure want to remove?")) {
+                $.ajax({
+                    url: '{{ route('remove.from.cart')}}',
+                    method: "DELETE",
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        id: ele.parents("tr").attr("data-id")
+                    },
+                    success: function(response) {
+                        window.location.reload();
+                    }
+                });
+            }
+        });
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-    <script src="{{ asset('client/js/jquery-migrate-3.0.1.min.js') }}"></script>
+    <scrip src="{{ asset('client/js/jquery-migrate-3.0.1.min.js') }}"></scrip>
     <script src="{{ asset('client/js/popper.min.js') }}"></script>
 
     <script src="{{ asset('client/js/bootstrap.min.js') }}"></script>

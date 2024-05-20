@@ -29,7 +29,11 @@
                             <tr>
                                 <th>ID</th>
                                 <th>NAME</th>
+                                <th>IMAGE</th>
                                 <th>EMAIL</th>
+                                <th>COUNTRY</th>
+                                <th>ADDRESS</th>
+                                <th>PHONE</th>
                                 <th>ROLES</th>
                                 <th>ACTION</th>
                             </tr>
@@ -39,7 +43,13 @@
                             <tr>
                                 <td>{{ $user->id}}</td>
                                 <td>{{ $user->name}}</td>
+                                <td>
+                                    <img src="/storage/{{$user->image}}" height="50px" width="50px" class="img-fluid">
+                                </td>
                                 <td>{{ $user->email}}</td>
+                                <td>{{ $user->country}}</td>
+                                <td>{{ $user->address}}</td>
+                                <td>{{ $user->phone}}</td>
                                 <td>
                                     @foreach($user->getRoleNames() as $rolename)
                                     <label class="badge bg-primary">{{$rolename}}</label>
@@ -48,15 +58,15 @@
                                 <td class="d-flex">
 
                                     @can('update-user')
-                                    <a href="{{route('users.edit',[$user->id])}}" class="btn btn-success me-5">Edit</a>
+                                    <a href="{{route('users.edit',[$user->id])}}" class="btn btn-success me-2"><i class="fa-solid fa-pen"></i></a>
                                     @endcan
-                                    
+
                                     @can('delete-user')
 
                                     <form method="post" action="{{route('users.destroy',[$user->id])}}">
                                         @csrf
                                         @method('delete')
-                                        <button class="btn btn-danger">Delete</button>
+                                        <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
                                     </form>
                                     @endcan
                                 </td>

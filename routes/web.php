@@ -12,6 +12,11 @@ use App\Http\Controllers\TagController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AboutPageController;
+use App\Http\Controllers\BannerController;
+use App\Http\Controllers\BlogPageController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PriceController;
 use App\Models\Tag;
 
 Route::get('/', function () {
@@ -27,28 +32,36 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('users', UserController::class);
     Route::get('/admin/dashboard', [AdminController::class, 'numberCount'])->name('adminDashboard');
 });
-
+Route::get('/admin/profile', [ProfileController::class, 'profile']);
 // Route::get('/admin/dashboard', [AdminController::class, 'headerLogo']);
 // Route::get('/admin/userCount', [UserController::class, 'userCount'])->name('userCount');
 Route::resource('products', ProductController::class);
 Route::get('/client/productShop', [ProductController::class, 'productShop'])->name('productShop');
 Route::resource('category', CategoryController::class);
 Route::resource('posts', PostController::class);
+Route::resource('price', PriceController::class);
+Route::resource('banner', BannerController::class);
 Route::resource('tags', TagController::class);
-Route::get('/client/dashboard', [ClientController::class, 'home'])->name('clientDashboard');
 Route::resource('about', AboutPageController::class);
+Route::resource('checkout', CheckoutController::class);
 
 
 // Route::get('/client/about', function () {
 //     return view('client.pages.about');
 // });
+Route::get('/client/dashboard', [ClientController::class, 'home'])->name('clientDashboard');
+Route::get('/client/blog', [BlogPageController::class, 'blog'])->name('clientBlog');
 
-Route::get('/client/checkout', function () {
-    return view('client.pages.checkout');
-});
-Route::get('/client/blog', function () {
-    return view('client.pages.blog');
-});
+Route::get('cart', [ProductController::class, 'cart'])->name('cart');
+Route::get('add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('add.to.cart');
+Route::patch('update-cart', [ProductController::class, 'update2'])->name('update.cart');
+Route::delete('remove-from-cart', [ProductController::class, 'remove'])->name('remove.from.cart');
+// Route::get('/client/blog', function () {
+//     return view('client.pages.blog');
+// });
+// Route::get('/client/checkout', function () {
+//     return view('client.pages.checkout');
+// });
 Route::get('/client/shop', function () {
     return view('client.pages.shop');
 });
@@ -61,13 +74,9 @@ Route::get('/client/contact', function () {
 Route::get('/client/products', function () {
     return view('client.pages.products');
 });
-Route::get('/client/cart', function () {
-    return view('client.pages.cart');
-});
 
-Route::get('/admin/profile', function () {
-    return view('admin.pages.profile');
-});
+
+
 Route::get('/admin/contact', function () {
     return view('admin.pages.contact');
 });

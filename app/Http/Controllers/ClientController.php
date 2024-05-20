@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use App\Models\AboutPage;
 use App\Models\Category;
+use App\Models\Post;
+use App\Models\Banner;
+use App\Models\Price;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -16,9 +19,11 @@ class ClientController extends Controller
     {
         $categories = Category::get();
         $about = AboutPage::get();
-        return view('client.dashboard', compact('categories','about'));
+        $posts = Post::get();
+        $banners=Banner::get();
+        $price=Price::get();
+        return view('client.dashboard', compact('categories','about','posts','banners','price'));
     }
-
     /**
      * Show the form for creating a new resource.
      */

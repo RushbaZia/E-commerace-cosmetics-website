@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CheckOut;
+use App\Models\Checkout;
 use Illuminate\Http\Request;
 
-class CheckOutController extends Controller
+class CheckoutController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +20,7 @@ class CheckOutController extends Controller
      */
     public function create()
     {
-        //
+        return view('client.pages.checkout');
     }
 
     /**
@@ -28,13 +28,14 @@ class CheckOutController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $checkout = Checkout::create($request->except('_token'));
+        return redirect()->route('adminDashboard')->with('status', 'Checkout Details Setup successfully');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(CheckOut $checkOut)
+    public function show(Checkout $checkout)
     {
         //
     }
@@ -42,7 +43,7 @@ class CheckOutController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(CheckOut $checkOut)
+    public function edit(Checkout $checkout)
     {
         //
     }
@@ -50,7 +51,7 @@ class CheckOutController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, CheckOut $checkOut)
+    public function update(Request $request, Checkout $checkout)
     {
         //
     }
@@ -58,7 +59,7 @@ class CheckOutController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CheckOut $checkOut)
+    public function destroy(Checkout $checkout)
     {
         //
     }

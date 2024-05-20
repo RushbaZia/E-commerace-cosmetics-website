@@ -73,7 +73,7 @@
                   <i class="fa-solid fa-book-open-reader"></i>
                 </div>
                 <div class="ps-3">
-                  <h6>44</h6>
+                  <h6>{{count($posts)}}</h6>
                 </div>
               </div>
             </div>
@@ -129,7 +129,7 @@
                 <i class="fa-solid fa-user-graduate"></i>
               </div>
               <div class="ps-3">
-                <h3></h3>
+                <h3>1</h3>
               </div>
             </div>
           </div>
@@ -145,7 +145,7 @@
                 <i class="fa-solid fa-user"></i>
               </div>
               <div class="ps-3">
-                <h3>45</h3>
+                <h3>1</h3>
               </div>
             </div>
           </div>
@@ -167,19 +167,21 @@
             <th scope="col">ACTION</th>
           </tr>
         </thead>
+        @foreach($users as $user)
         <tbody>
           <tr>
-            <th>1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <th>{{$user->id}}</th>
+            <td>{{$user->name}}</td>
+            <td>{{$user->email}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
             <td><i class="fa-solid fa-pen text-success pe-3"></i><i class="fa-solid fa-trash text-danger"></i></td>
           </tr>
           
         </tbody>
+        @endforeach
       </table>
     </div>
     @endif

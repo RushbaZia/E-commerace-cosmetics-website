@@ -10,7 +10,7 @@
                     </h4>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{route('users.store')}}">
+                    <form method="POST" action="{{route('users.store')}}" enctype="multipart/form-data">
                         @csrf
 
                         <div class=" col-md-12 form-floating">
@@ -25,6 +25,18 @@
                             <input type="password" class="form-control" id="floatingInput" placeholder="password" name="password">
                             <label for="floatingInput">Password</label>
                         </div><br>
+                        <div class=" col-md-12 form-floating">
+                            <input type="text" class="form-control" id="floatingInput" placeholder="Country" name="country">
+                            <label for="floatingInput">Country</label>
+                        </div><br>
+                        <div class=" col-md-12 form-floating">
+                            <input type="text" class="form-control" id="floatingInput" placeholder="Address" name="address">
+                            <label for="floatingInput">Address</label>
+                        </div><br>
+                        <div class=" col-md-12 form-floating">
+                            <input type="text" class="form-control" id="floatingInput" placeholder="Phone" name="phone">
+                            <label for="floatingInput">Phone</label>
+                        </div><br>
 
                         <div class=" col-md-12 form-floating">
                             <div class="form-floating mb-3 w-100">
@@ -36,7 +48,9 @@
                                 </select>
                             </div>
                         </div><br>
-
+                        <div class="mb-3">
+                            <input type="file" class="form-control" name="image">
+                        </div>
 
 
                         <div class="mt-3">

@@ -46,6 +46,16 @@ class UserController extends Controller
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
         $user = User::create($input);
+        if ($request->hasFile('image')) {
+
+            $file = $request->file('image');
+            $extenstion = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extenstion;
+            $request->file('image')->storeAs('public/upload', $filename);
+            $user->image = $filename;
+        }
+        $user->image = "upload/$filename";
+        $user->save();
         $user->assignRole($request->input('roles'));
 
         return redirect('/users')->with('status', 'User Created successfully');
@@ -77,7 +87,17 @@ class UserController extends Controller
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
         $user->update($input);
+        if ($request->hasFile('image')) {
 
+            $file = $request->file('image');
+            $extenstion = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extenstion;
+            $request->file('image')->storeAs('public/upload', $filename);
+            $user->image = $filename;
+        }
+        $user->image = "upload/$filename";
+
+        $user->update();
         $user->assignRole($request->input('roles'));
 
         return redirect('/users')->with('status', 'User Updated successfully');

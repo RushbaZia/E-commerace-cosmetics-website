@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -12,7 +14,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $post =Post::all();
+        $post =Post::with('tag','category')->get();
         return view('admin.pages.post.index', compact('post'));
     }
 
@@ -21,7 +23,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.post.create');
+        $tag = Tag::all();
+        $category = Category::all();
+        return view('admin.pages.post.create', compact('tag','category'));
     }
 
     /**
@@ -30,7 +34,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
        
-        $post= Post::create($request->all());
+        $post= Post::create($request->except('_token', 'tag_id','category_id'));
         if ($request->hasFile('image')) {
             
             $file = $request->file('image');
@@ -41,6 +45,9 @@ class PostController extends Controller
         }
         $post->image = "upload/$filename";
         $post->save();
+
+        $post->tag()->attach($request->tag_id);
+        $post->category()->attach($request->category_id);
         return redirect()->route('posts.index')->with('status','Added sucessfully!');
     }
     /**
@@ -56,7 +63,11 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.pages.post.edit', compact('post'));
+        $tags = Tag::all();
+        $tag = $post->tag()->get()->pluck('id')->toArray();
+        $categories = Category::all();
+        $category= $post->category()->get()->pluck('id')->toArray();
+        return view('admin.pages.post.edit', compact('post','tags','tag','categories', 'category'));
     }
 
     /**
@@ -64,7 +75,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $post= Post::create($request->all());
+        $post->update($request->except('_token','tag_id','category_id'));
         if ($request->hasFile('image')) {
             
             $file = $request->file('image');
@@ -74,7 +85,11 @@ class PostController extends Controller
             $post->image = $filename;
         }
         $post->image = "upload/$filename";
+
+        
         $post->update();
+        $post->tag()->sync($request->tag_id);
+        $post->category()->sync($request->category_id);
         return redirect()->route('posts.index')->with('status','updated sucessfully!');
     }
 
@@ -83,6 +98,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        $post->tag()->detach();
+        $post->category()->detach();
         $post->delete();
         return redirect()->route('posts.index')->with('delete','Deleted sucessfully!');
     }

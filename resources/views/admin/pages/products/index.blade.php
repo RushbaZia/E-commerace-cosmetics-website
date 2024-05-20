@@ -44,14 +44,14 @@
                     $categories = $product->category;
                     ?>
                     @foreach($categories as $category)
-                    {{$category->name}},
+                    {{$category->name}}
                     @endforeach
                 </td>
                 <td>{{$product->price}}</td>
                 <td>{{$product->details}}</td>
                 <td>
                     <a href="{{route('products.edit', [$product->id])}}" class="btn btn-outline-success">
-                        <i class="fa-solid fa-pen"></i>&nbsp;Edit</a>
+                        &nbsp;Edit</a>
                 </td>
                 <td>
                     <form method="post" action="{{route('products.destroy', [$product->id])}}">

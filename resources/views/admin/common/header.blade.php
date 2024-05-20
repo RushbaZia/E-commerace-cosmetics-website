@@ -1,6 +1,6 @@
  <!-- ======= Header ======= -->
  <header id="header" class="header fixed-top d-flex align-items-center">
-
+   @if (Auth::user()->hasRole('Admin'))
    <div class="d-flex align-items-center justify-content-between">
      <a href="index.html" class="logo d-flex align-items-center">
        <img src="{{asset('admin/img/favicon.png')}}" alt="">
@@ -8,7 +8,23 @@
      </a>
      <i class="bi bi-list toggle-sidebar-btn"></i>
    </div><!-- End Logo -->
-
+   @elseif(Auth::user()->hasRole('Manager'))
+   <div class="d-flex align-items-center justify-content-between">
+     <a href="index.html" class="logo d-flex align-items-center">
+       <img src="{{asset('admin/img/favicon.png')}}" alt="">
+       <span class="d-none d-lg-block">Pretty Manager</span>
+     </a>
+     <i class="bi bi-list toggle-sidebar-btn"></i>
+   </div><!-- End Logo -->
+   @elseif(Auth::user()->hasRole('User'))
+   <div class="d-flex align-items-center justify-content-between">
+     <a href="index.html" class="logo d-flex align-items-center">
+       <img src="{{asset('admin/img/favicon.png')}}" alt="">
+       <span class="d-none d-lg-block">Pretty User</span>
+     </a>
+     <i class="bi bi-list toggle-sidebar-btn"></i>
+   </div><!-- End Logo -->
+   @endif
    <div class="search-bar">
      <form class="search-form d-flex align-items-center" method="POST" action="#">
        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
@@ -198,14 +214,14 @@
                  </a>
                </li>
                <li>
-                   <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                     <i class="bi bi-box-arrow-right"></i>{{ __('Logout') }}
-                   </a>
+                   <i class="bi bi-box-arrow-right"></i>{{ __('Logout') }}
+                 </a>
 
-                   <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                     @csrf
-                   </form>
+                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                   @csrf
+                 </form>
                </li>
              </ul>
 

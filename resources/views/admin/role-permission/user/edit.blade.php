@@ -10,7 +10,7 @@
                     </h4>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{route('users.update', $user->id)}}">
+                    <form method="POST" action="{{route('users.update', $user->id)}}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class=" col-md-12 form-floating">
@@ -25,7 +25,18 @@
                             <input type="password" class="form-control" id="floatingInput" placeholder="password" name="password" value='{{old('password', $user->password)}}'>
                             <label for="floatingInput">Password</label>
                         </div><br>
-
+                        <div class=" col-md-12 form-floating">
+                            <input type="text" class="form-control" id="floatingInput" placeholder="Country" name="country" value='{{old('country', $user->country)}}'>
+                            <label for="floatingInput">Country</label>
+                        </div><br>
+                        <div class=" col-md-12 form-floating">
+                            <input type="text" class="form-control" id="floatingInput" placeholder="Address" name="address" value='{{old('address', $user->address)}}'>
+                            <label for="floatingInput">Address</label>
+                        </div><br>
+                        <div class=" col-md-12 form-floating">
+                            <input type="text" class="form-control" id="floatingInput" placeholder="Phone" name="phone" value='{{old('phone', $user->phone)}}'>
+                            <label for="floatingInput">Phone</label>
+                        </div><br>
                         <div class=" col-md-12 form-floating">
                             <div class="form-floating mb-3 w-100">
                                 <p>Select Roles</p>
@@ -39,9 +50,10 @@
                                 </select>
                             </div>
                         </div><br>
-
-
-
+                        
+                        <div class="mb-3">
+                            <input type="file" class="form-control" name="image">
+                        </div>
                         <div class="mt-3">
                             <button class="btn btn-primary" type="submit">Update</button>
                         </div>

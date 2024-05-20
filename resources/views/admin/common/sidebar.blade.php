@@ -16,12 +16,12 @@
         </a>
         <ul id="banner-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="#">
+            <a href="{{route('banner.index')}}">
               <i class="bi bi-circle"></i><span>List</span>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="{{route('banner.create')}}">
               <i class="bi bi-circle"></i><span>Create</span>
             </a>
           </li>
@@ -29,7 +29,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#expert-nav" data-bs-toggle="collapse" href="#">
-        <i class="fa-solid fa-paintbrush"></i><span>Experts</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="fa-solid fa-paintbrush"></i><span>Experts</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="expert-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -95,6 +95,27 @@
           </li>
         </ul>
       </li>
+
+
+      <li class="nav-heading">Price Packages</li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#price-nav" data-bs-toggle="collapse" href="#">
+          <i class="fa-solid fa-hand-holding-dollar"></i><span>Price</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="price-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="">
+              <i class="bi bi-circle"></i><span>List</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('price.create')}}">
+              <i class="bi bi-circle"></i><span>Create</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      
       <li class="nav-heading">Blog Posts</li>
 
       <li class="nav-item">
@@ -194,7 +215,7 @@
       <li class="nav-heading">Pages</li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="/admin/profile">
+        <a class="nav-link collapsed" href="{{url('/admin/profile')}}">
           <i class="bi bi-person"></i>
           <span>Profile</span>
         </a>
@@ -207,19 +228,6 @@
         </a>
       </li><!-- End Contact Page Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="register">
-          <i class="bi bi-card-list"></i>
-          <span>Register</span>
-        </a>
-      </li><!-- End Register Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="login">
-          <i class="bi bi-box-arrow-in-right"></i>
-          <span>Login</span>
-        </a>
-      </li><!-- End Login Page Nav -->
       @elseif(Auth::user()->hasRole('Manager'))
       <li class="nav-heading">Shop</li>
       <li class="nav-item">
@@ -298,18 +306,18 @@
       <li class="nav-heading">Shop</li>
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-        <i class="fa-solid fa-box-open"></i><span>Orders</span>
+          <i class="fa-solid fa-box-open"></i><span>Orders</span>
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-        <i class="fa-solid fa-star-half-stroke"></i><span>Reviews</span>
+          <i class="fa-solid fa-star-half-stroke"></i><span>Reviews</span>
         </a>
       </li>
       <li class="nav-heading">Blog Post</li>
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-        <i class="fa-solid fa-comments"></i><span>Comments</span>
+          <i class="fa-solid fa-comments"></i><span>Comments</span>
         </a>
       </li>
       @endif
