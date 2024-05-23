@@ -35,6 +35,8 @@
   <!-- Template Main CSS File -->
   <link href="{{asset('admin/css/style.css')}}" rel="stylesheet">
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
   <!-- =======================================================
   * Template Name: NiceAdmin
   * Updated: Mar 09 2023 with Bootstrap v5.2.3
@@ -56,7 +58,7 @@
   <main id="main" class="main">
     <!-- End Sidebar-->
     @yield('content')
-   
+
     <!-- End #main -->
   </main>
   <!-- ======= Footer ======= -->
@@ -67,7 +69,7 @@
 
   <!-- Vendor JS Files -->
   <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
-  
+
   <script src="{{asset('admin/vendor/apexcharts/apexcharts.min.js')}}"></script>
   <script src="{{asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{asset('admin/vendor/chart.js/chart.umd.js')}}"></script>
@@ -79,6 +81,26 @@
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <!-- Template Main JS File -->
   <script src="{{asset('admin/js/main.js')}}"></script>
+  <!-- <script>
+    function remove(ev) {
+      ev.preventDefault();
+      var urlToRedirect = ev.currentTarget.getAttribute('href');
+      console.log(urlToRedirect);
+      swal({
+          title: "Are you sure to Delete this tag",
+          text: "You will not be able to revert this!",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willCancel) => {
+          if (willCancel) {
+            window.location.href = urlToRedirect;
+
+          }
+        });
+    }
+  </script> -->
   <script>
     $(document).ready(function() {
       $('.js-example-basic-multiple').select2();

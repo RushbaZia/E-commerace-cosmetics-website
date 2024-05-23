@@ -1,10 +1,10 @@
-
 <!-- CART LAYOUT -->
 
 
 @extends('layout')
 
 @section('content')
+@if(count((array) session('cart')) > 0)
 <table id="cart" class="table table-hover table-condensed">
     <thead>
         <tr>
@@ -23,7 +23,7 @@
         <tr data-id="{{ $id }}">
             <td data-th="Product">
                 <div class="row">
-                    <div class="col-sm-3 hidden-xs"><img src="{{ $details['image'] }}" width="100" height="100" class="img-responsive" /></div>
+                    <div class="col-sm-3 hidden-xs"><img src="/storage/{{ $details['image'] }}" width="100" height="100" class="img-responsive" /></div>
                     <div class="col-sm-9">
                         <h4 class="nomargin">{{ $details['name'] }}</h4>
                     </div>
@@ -31,8 +31,8 @@
             </td>
             <td data-th="Price">${{ $details['price'] }}</td>
             <td data-th="Quantity">
-                        <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity update-cart" />
-                    </td>
+                <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity update-cart" />
+            </td>
             <td data-th="Subtotal" class="text-center">${{ $details['price'] * $details['quantity'] }}</td>
             <td class="actions" data-th="">
                 <button class="btn btn-danger btn-sm remove-from-cart"><i class="fa fa-trash-o"></i></button>
@@ -55,6 +55,14 @@
         </tr>
     </tfoot>
 </table>
+@else
+<div class="col-md-12">
+    <div class="card">
+        <h4 class="text-center p-5">Your Cart is Empty!</h4>
+    </div>
+    <a href="{{ route('productShop') }}" class="btn btn-warning"><< Fill Your Cart</a>
+</div>
+@endif
 @endsection
 
 @section('scripts')

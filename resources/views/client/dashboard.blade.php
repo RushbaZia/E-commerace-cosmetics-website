@@ -33,7 +33,6 @@
             <div class="col-md-4 ftco-animate">
                 <div class="media d-block text-center block-6 services">
                     <img src="/storage/{{$category->image}}" class="img-fluid rounded thumbnail-image">
-
                     <div class="media-body">
                         <h3 class="heading">{{$category->name}}</h3>
                         <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
@@ -97,12 +96,14 @@
                         <p><span class="price">${{$price->price}}</span> <span class="per">/ one trip</span></p>
                     </div>
                     <ul>
-                        <li>{{$price->services}}</li>
+                        @foreach(explode(',', $price->services) as $service)
+                        <li>{{ $service }}</li>
+                        @endforeach
                     </ul>
                     <p class="button text-center"><a href="#" class="btn btn-primary btn-outline-primary px-4 py-3">Order now</a></p>
                 </div>
             </div>
-           @endforeach
+            @endforeach
         </div>
     </div>
 </section>
@@ -166,15 +167,15 @@
             </div>
         </div>
         <div class="row d-flex">
-        @foreach($posts as $post)
+            @foreach($posts as $post)
             <div class="col-md-4 d-flex ftco-animate">
                 <div class="blog-entry align-self-stretch">
                     <a href="/client/blogSingle" class="block-20">
-                    <img src="/storage/{{$post->image}}" class="img-fluid rounded thumbnail-image">
+                        <img src="/storage/{{$post->image}}" class="img-fluid rounded thumbnail-image">
                     </a>
                     <div class="text py-4 d-block">
                         <div class="meta">
-                            <div><a href="#"><span class="icon-calendar"></span> {{$post->created_at->format('d-M-Y-D')}}</a></div>
+                            <div><a href="#"><span class="icon-calendar"></span> {{$post->created_at->format('M d, Y')}}</a></div>
                             <div><a href="#"><span class="icon-person"></span>{{$post->author}}</a></div>
                             <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
                         </div>

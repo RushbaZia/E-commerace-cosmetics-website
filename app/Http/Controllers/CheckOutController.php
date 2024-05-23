@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Checkout;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
@@ -20,7 +21,11 @@ class CheckoutController extends Controller
      */
     public function create()
     {
-        return view('client.pages.checkout');
+        if (Auth::check()) {
+            return view('client.pages.checkout');
+        } else {
+            return redirect()->route('login')->with('error','You have to login first');
+        }
     }
 
     /**

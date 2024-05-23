@@ -31,23 +31,27 @@
                         <div class=" col-md-12 form-floating">
                             <div class="form-floating mb-3 w-100">
                                 <p>Select Services:</p>
-                                <select class="js-example-basic-multiple form-select" name="services" multiple="multiple">
+                                <select class="js-example-basic-multiple form-select" name="services[]" multiple="multiple">
                                    
                                     <option>Hair Trimming</option>
                                     <option>Scalp massage</option>
                                     <option>Complete hair makeover</option>
+                                    <option>Keratine</option>
 
                                     <option>Facial</option>
                                     <option>Customized facial</option>
                                     <option>VIP facial </option>
+                                    <option>Exfoliation  </option>
 
                                     <option>Light touch-up</option>
                                     <option>Event makeup</option>
                                     <option>Makeup with airbrushing</option>
+                                    <option>Full makeup trial and consultation</option>
 
                                     <option>Cleansing</option>
                                     <option>Deep cleansing</option>
                                     <option>Microdermabrasion</option>
+                                    <option>Chemical peel</option>
                                 </select>
                             </div>
                         </div><br>

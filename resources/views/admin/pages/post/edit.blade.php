@@ -45,8 +45,10 @@
                 </select>
             </div>
             <div class="mb-3">
+            <label for="Post Thumbnail" class="form-label">Thumbnail</label>
                 <input type="file" class="form-control" name="image">
             </div>
+            
             <div class="mt-4">
                 <button type="submit" class="btn btn-primary">Update</button>
             </div>

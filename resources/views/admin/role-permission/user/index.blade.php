@@ -52,7 +52,15 @@
                                 <td>{{ $user->phone}}</td>
                                 <td>
                                     @foreach($user->getRoleNames() as $rolename)
-                                    <label class="badge bg-primary">{{$rolename}}</label>
+                                    @if($rolename == 'Admin')
+                                    <label class="badge bg-danger">{{$rolename}}</label>
+                                    @elseif($rolename == 'Manager')
+                                    <label class="badge bg-dark">{{$rolename}}</label>
+                                    @elseif($rolename == 'User')
+                                    <label class="badge bg-success">{{$rolename}}</label>
+                                    @else
+                                    <label class="badge bg-warning">{{$rolename}}</label>
+                                    @endif
                                     @endforeach
                                 </td>
                                 <td class="d-flex">

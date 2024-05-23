@@ -15,8 +15,10 @@ use App\Http\Controllers\AboutPageController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BlogPageController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PriceController;
+use App\Http\Controllers\CommentController;
 use App\Models\Tag;
 
 Route::get('/', function () {
@@ -43,14 +45,15 @@ Route::resource('price', PriceController::class);
 Route::resource('banner', BannerController::class);
 Route::resource('tags', TagController::class);
 Route::resource('about', AboutPageController::class);
-Route::resource('checkout', CheckoutController::class);
+Route::resource('checkout', CheckoutController::class)->middleware('checkout.auth');
+Route::resource('contact', ContactController::class);
 
-
-// Route::get('/client/about', function () {
-//     return view('client.pages.about');
-// });
 Route::get('/client/dashboard', [ClientController::class, 'home'])->name('clientDashboard');
 Route::get('/client/blog', [BlogPageController::class, 'blog'])->name('clientBlog');
+Route::post('/{id}/show',[BlogPageController::class ,'show'])->name('blog.show');
+Route::resource('comment', CommentController::class);
+Route::get('/comments',[CommentController::class ,'index'])->name('comment.index');
+
 
 Route::get('cart', [ProductController::class, 'cart'])->name('cart');
 Route::get('add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('add.to.cart');

@@ -19,13 +19,16 @@
     </div>
 </div>
 @endsection
-
 @section('content')
 
 <section class="ftco-section contact-section">
+    @if(session('status'))
+    <div class="alert alert-success mt-3 text-center"><i class="fa-solid fa-circle-check  fs-3 pe-3"></i>{{session('status')}}</div>
+    @endif
     <div class="container mt-5">
         <div class="row block-9">
             <div class="col-md-4 contact-info ftco-animate">
+
                 <div class="row">
                     <div class="col-md-12 mb-4">
                         <h2 class="h4">Contact Information</h2>
@@ -37,36 +40,37 @@
                         <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
                     </div>
                     <div class="col-md-12 mb-3">
-                        <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+                        <p><span>Email:</span> <a href="mailto:info@yoursite.com">pretty@gmail.com</a></p>
                     </div>
                     <div class="col-md-12 mb-3">
-                        <p><span>Website:</span> <a href="#">yoursite.com</a></p>
+                        <p><span>Website:</span> <a href="#">pretty.com</a></p>
                     </div>
                 </div>
             </div>
             <div class="col-md-1"></div>
             <div class="col-md-6 ftco-animate">
-                <form action="#" class="contact-form">
+                <form method="POST" action="{{route('contact.store')}}" class="contact-form">
+                    @csrf
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Your Name">
+                                <input type="text" class="form-control" placeholder="Your Name" name="name">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Your Email">
+                                <input type="text" class="form-control" placeholder="Your Email" name="email">
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Subject">
+                        <input type="text" class="form-control" placeholder="Subject" name="subject">
                     </div>
                     <div class="form-group">
-                        <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+                        <textarea id="" cols="30" rows="7" class="form-control" placeholder="Message" name="message"></textarea>
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+                        <button type="submit" class="btn btn-primary py-3 px-5">Send Message</button>
                     </div>
                 </form>
             </div>

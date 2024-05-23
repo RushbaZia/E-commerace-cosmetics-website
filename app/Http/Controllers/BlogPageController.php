@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\BlogPage;
 use App\Models\Post;
+use App\Models\Category;
+use App\Models\Tag;
+use App\Models\User;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
 class BlogPageController extends Controller
@@ -14,6 +18,7 @@ class BlogPageController extends Controller
     public function blog()
     {
         $posts = Post::get();
+        $comments = Comment::get();
         return view('client.pages.blog', compact('posts'));
     }
 
@@ -36,9 +41,15 @@ class BlogPageController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(BlogPage $blogPage)
+    public function show($id)
     {
-        //
+        $post = Post::findorfail($id);
+        $posts = Post::get();
+        $categories = Category::get();
+        $tag = Tag::get();
+        $users = User::get();
+        $comment = Comment::get();
+        return view('client.pages.blogSingle', compact('posts', 'categories', 'tag', 'users', 'comment'));
     }
 
     /**

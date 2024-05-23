@@ -29,7 +29,12 @@ class PriceController extends Controller
      */
     public function store(Request $request)
     {
-        $price = Price::create($request->except('_token'));
+        $price=$request->all();
+        $service=$price['services'];
+       
+        $price['services']=implode(',', $service);
+
+        Price::create($price);
         return redirect()->route('clientDashboard')->with('status', 'Price Setup successfully');
     }
 

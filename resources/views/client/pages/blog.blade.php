@@ -34,9 +34,8 @@
             @foreach($posts as $post)
             <div class="col-md-4 d-flex ftco-animate">
                 <div class="blog-entry align-self-stretch">
-                    <a href="/client/blogSingle" class="block-20">
-                    <img src="/storage/{{$post->image}}" class="img-fluid rounded thumbnail-image">
-                    </a>
+                   
+                        <img src="/storage/{{$post->image}}" class="img-fluid thumbnail-image">
                     <div class="text py-4 d-block">
                         <div class="meta">
                             <div><a href="#"><span class="icon-calendar"></span> {{$post->created_at->format('d-M-Y-D')}}</a></div>
@@ -44,7 +43,10 @@
                             <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
                         </div>
                         <h3 class="heading mt-2"><a href="#">{{$post->title}}</a></h3>
-                        <p>{{$post->content}}</p>
+                        <form action="{{route('blog.show',[$post->id])}}" method="POST">
+                            @csrf
+                            <button class="btn btn-primary py-3 px-5">Read More</button>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -171,9 +171,9 @@
         <tbody>
           <tr>
             <th>{{$user->id}}</th>
-            <td>{{$user->name}}</td>
-            <td>{{$user->email}}</td>
             <td></td>
+            <td></td>
+            <td>{{$user->email}}</td>
             <td></td>
             <td></td>
             <td></td>

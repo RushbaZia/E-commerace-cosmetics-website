@@ -12,7 +12,23 @@
                 <li class="nav-item"><a href="{{route('clientBlog')}}" class="nav-link">Blog</a></li>
                 <li class="nav-item"><a href="{{route('productShop')}}" class="nav-link">Shop</a></li>
                 <li class="nav-item"><a href="{{route('checkout.create')}}" class="nav-link">Checkout</a></li>
-                <li class="nav-item"><a href="contact" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="{{route('contact.create')}}" class="nav-link">Contact</a></li>
+                @guest
+                <li class="nav-item d-flex mt-4"><a href="/login"><i class="fa-solid fa-power-off text-danger"></i> Login</a>/<a href="/register">Register</a></li>
+                @endguest
+                @auth
+                <li class="nav-item mt-4"><a href="/login"> Dashboard</a></li>
+                <li class="nav-item mt-4 ps-3">
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </li>
+                @endauth
                 <!-- <li class="nav-item"><a href="{{route('cart')}}" class="nav-link"><i class="fa fa-shopping-cart fs-4"></i></a></li> -->
             </ul>
         </div>

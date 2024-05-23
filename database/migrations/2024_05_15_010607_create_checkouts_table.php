@@ -22,10 +22,10 @@ return new class extends Migration
             $table->string('city');
             $table->integer('zip');
             $table->string('paymentMethod');
-            $table->string('cardName');
-            $table->bigInteger('cardNumber');
-            $table->string('expiryDate');
-            $table->integer('cvv');
+            $table->string('cardName')->nullable();
+            $table->bigInteger('cardNumber')->nullable();
+            $table->string('expiryDate')->nullable();
+            $table->integer('cvv')->nullable();
 
             $table->timestamps();
         });

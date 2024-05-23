@@ -115,7 +115,7 @@
           </li>
         </ul>
       </li>
-      
+
       <li class="nav-heading">Blog Posts</li>
 
       <li class="nav-item">
@@ -152,10 +152,8 @@
           </li>
         </ul>
       </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#comment-nav" data-bs-toggle="collapse" href="#">
-          <i class="fa-solid fa-pen"></i><span>Comments</span>
-        </a>
+      <li>
+        <a href="{{route('comment.index')}}" class="nav-link collapsed"> <i class="fa-solid fa-pen"></i><span>Comments</span></a>
       </li>
 
       <li class="nav-heading">Roles/Permissions</li>
@@ -222,7 +220,7 @@
       </li><!-- End Profile Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="contact">
+        <a class="nav-link collapsed" href="{{route('contact.index')}}">
           <i class="bi bi-envelope"></i>
           <span>Contact</span>
         </a>
@@ -302,6 +300,42 @@
           </li>
         </ul>
       </li>
+      <li class="nav-heading">Blog Posts</li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#posts-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Posts</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="posts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{{route('posts.index')}}">
+              <i class="bi bi-circle"></i><span>List</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('posts.create')}}">
+              <i class="bi bi-circle"></i><span>Add posts</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#tag-nav" data-bs-toggle="collapse" href="#">
+          <i class="fa-solid fa-hashtag"></i><span>Tags</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="tag-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{{route('tags.index')}}">
+              <i class="bi bi-circle"></i><span>List</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('tags.create')}}">
+              <i class="bi bi-circle"></i><span>Create</span>
+            </a>
+          </li>
+        </ul>
+      </li>
       @elseif(Auth::user()->hasRole('User'))
       <li class="nav-heading">Shop</li>
       <li class="nav-item">
@@ -316,9 +350,7 @@
       </li>
       <li class="nav-heading">Blog Post</li>
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="fa-solid fa-comments"></i><span>Comments</span>
-        </a>
+        <a href="{{route('comment.index')}}" class="nav-link collapsed"> <i class="fa-solid fa-pen"></i><span>Comments</span></a>
       </li>
       @endif
 

@@ -11,10 +11,9 @@
     @if(session('status'))
     <div class="alert alert-success mt-3">{{session('status')}}</div>
     @endif
-
-    @if(session('delete'))
+    <!-- @if(session('delete'))
     <div class="alert alert-danger mt-3">{{session('delete')}}</div>
-    @endif
+    @endif -->
     <table class="table table-dark table-hover">
         <thead>
             <tr>
@@ -44,20 +43,20 @@
                     $categories = $product->category;
                     ?>
                     @foreach($categories as $category)
-                    {{$category->name}}
+                    {{$category->name}},
                     @endforeach
                 </td>
                 <td>{{$product->price}}</td>
                 <td>{{$product->details}}</td>
                 <td>
                     <a href="{{route('products.edit', [$product->id])}}" class="btn btn-outline-success">
-                        &nbsp;Edit</a>
+                        <i class="fa-solid fa-pen"></i> </a>
                 </td>
                 <td>
                     <form method="post" action="{{route('products.destroy', [$product->id])}}">
                         @csrf
                         @method('delete')
-                        <button class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i>&nbsp;Delete</button>
+                        <button class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
                     </form>
                 </td>
 
@@ -65,6 +64,16 @@
         </tbody>
         @endforeach
     </table>
+    @if(Session::has('delete'))
+    <script>
+        swal('Are you Sure to Delete', "{{Session::get('delete')}}", 'error', {
+            button: true,
+            button: "YES!",
+            timer: 3000,
+            dangerMode: true,
+        });
+    </script>
+    @endif
 </div>
 
 @endsection
