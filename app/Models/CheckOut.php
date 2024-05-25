@@ -9,6 +9,7 @@ class Checkout extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'user_id',
         'fname',
         'lname',
         'email',
@@ -18,9 +19,17 @@ class Checkout extends Model
         'city',
         'zip',
         'paymentMethod',
-        'cardName',
         'cardNumber',
         'expiryDate',
         'cvv',
+        'product_id',
+        // 'tracking_no'
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function product(){
+        return $this->belongsToMany(Product::class,'order_item', 'product_id', 'checkout_id');
+    }
 }

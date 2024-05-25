@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -13,7 +14,8 @@ class CommentController extends Controller
     public function index()
     {
         $comment = Comment::all();
-        return view('admin.pages.comments.index', compact('comment'));
+        $posts = Post::get();
+        return view('admin.pages.comments.index', compact('comment', 'posts'));
     }
 
     /**
@@ -21,7 +23,6 @@ class CommentController extends Controller
      */
     public function create()
     {
-
     }
 
     /**

@@ -18,6 +18,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PriceController;
+use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\CommentController;
 use App\Models\Tag;
 
@@ -50,21 +51,20 @@ Route::resource('contact', ContactController::class);
 
 Route::get('/client/dashboard', [ClientController::class, 'home'])->name('clientDashboard');
 Route::get('/client/blog', [BlogPageController::class, 'blog'])->name('clientBlog');
-Route::post('/{id}/show',[BlogPageController::class ,'show'])->name('blog.show');
+Route::post('/{id}/show', [BlogPageController::class, 'show'])->name('blog.show');
 Route::resource('comment', CommentController::class);
-Route::get('/comments',[CommentController::class ,'index'])->name('comment.index');
+Route::get('/comments', [CommentController::class, 'index'])->name('comment.index');
 
 
 Route::get('cart', [ProductController::class, 'cart'])->name('cart');
 Route::get('add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('add.to.cart');
 Route::patch('update-cart', [ProductController::class, 'update2'])->name('update.cart');
 Route::delete('remove-from-cart', [ProductController::class, 'remove'])->name('remove.from.cart');
-// Route::get('/client/blog', function () {
-//     return view('client.pages.blog');
-// });
-// Route::get('/client/checkout', function () {
-//     return view('client.pages.checkout');
-// });
+Route::controller(StripePaymentController::class)->group(function () {
+    Route::get('stripe', 'stripe');
+    Route::post('stripe', 'stripePost')->name('stripe.post');
+});
+
 Route::get('/client/shop', function () {
     return view('client.pages.shop');
 });

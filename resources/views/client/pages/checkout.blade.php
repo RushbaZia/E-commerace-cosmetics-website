@@ -20,45 +20,61 @@
 </div>
 @endsection
 @if(session('delete'))
-<div class="alert alert-success mt-3">{{session('delete')}}</div>
+<div class="alert alert-danger mt-3">{{session('delete')}}</div>
 @endif
 @section('content')
 <div class="container mt-5 mb-5">
-    <div class="row g-5">
-        <div class="col-md-5 col-lg-4 order-md-last">
-            <h4 class="d-flex justify-content-between align-items-center mb-3">
-                <span class="text-primary">Your cart</span>
-                <span class="badge bg-primary rounded-pill">{{ count((array) session('cart')) }}</span>
-            </h4>
-            <ul class="list-group mb-3">
-                @if(session('cart'))
-                @foreach(session('cart') as $id => $details)
+    @if(session('status'))
+    <div class="alert alert-success mt-3">{{session('status')}}</div>
+    @endif
+    <form class="needs-validation" method="POST" action="{{route('checkout.store')}}" novalidate>
+        @csrf
+        <div class="row g-5">
+            <div class="col-md-5 col-lg-4 order-md-last">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-primary">Order Details</span>
+                    <span class="badge bg-primary rounded-pill">{{ count((array) session('cart')) }} <i class="fa fa-shopping-cart "></i></span>
+                </h4>
+                <table class="table">
+                    <thead>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Qty</th>
+                        <th>Price</th>
+                    </thead>
+                    @if(session('cart'))
+                    @foreach(session('cart') as $id => $details)
+                    <tbody>
+                        <tr>
+                            <td><img src="/storage/{{ $details['image'] }}" height="60px" width="70px"></td>
+                            <td>{{ $details['name'] }}</td>
+                            <td>{{ $details['quantity'] }}</td>
+                            <td> ${{ $details['price'] }}</td>
+                        </tr>
+                        <tr>
+                            @php $total = 0 @endphp
+                            @foreach((array) session('cart') as $id => $details)
+                            @php $total += $details['price'] * $details['quantity'] @endphp
+                            @endforeach
+                            <hr>
+                        </tr>
+                    </tbody>
+                    @endforeach
+                    <td colspan="3">
+                        <h4>Total: <span class="text-info">$ {{ $total }}</h3>
+                    </td>
+                    @endif
+                </table>
+                <button class="w-100 btn btn-primary btn-lg" type="submit">Place Order</button>
 
-                <li class="list-group-item d-flex justify-content-between lh-sm">
-                    <div>
-                        <img src="/storage/{{ $details['image'] }}" height="60px" width="70px">
+            </div>
+            <div class="col-md-7 col-lg-8">
+                <h4 class="mb-3">Billing address</h4>
 
-                    </div>
-                    <h6 class="my-0">{{ $details['name'] }}</h6>
-                    <span class="text-muted"> ${{ $details['price'] }}</span>
-                </li>
-                @endforeach
-                @endif
-                @php $total = 0 @endphp
-                @foreach((array) session('cart') as $id => $details)
-                @php $total += $details['price'] * $details['quantity'] @endphp
-                @endforeach
-                <hr>
-                <li class="list-group-item d-flex justify-content-between">
-                    <h5>Total: <span class="text-info">$ {{ $total }}</span></h5>
-                </li>
-            </ul>
-        </div>
-        <div class="col-md-7 col-lg-8">
-            <h4 class="mb-3">Billing address</h4>
-            <form class="needs-validation" method="POST" action="{{route('checkout.store')}}" novalidate>
-                @csrf
                 <div class="row g-3">
+                    @foreach($user as $item)
+                    <input type="hidden" value="{{$item->id}}" class="form-control" name="user_id">
+                    @endforeach
                     <div class="col-sm-6">
                         <label for="firstName" class="form-label">First name</label>
                         <input type="text" class="form-control" id="firstName" placeholder="First Name" name="fname" required>
@@ -122,16 +138,16 @@
                         <label class="form-check-label" for="payment_method_one">Cash On Delivery</label>
                     </div>
                     <div class="">
-                        <input id="payment_method_two" name="paymentMethod" type="radio" value="stripe" class="form-check-input" required>
+                        <input id="payment_method_two" name="paymentMethod" type="radio" value="stripe" class="form-check-input" required onchange="if(this.checked){window.location.href='http://127.0.0.1:8000/stripe'}">
                         <label class="form-check-label" for="payment_method_two">Stripe</label>
                     </div>
                 </div>
 
-                <div class="row gy-3 d-none mt-3" id="card_payment_form">
+                <!-- <div class="row gy-3 d-none mt-3" id="card_payment_form">
 
                     <div class="col-md-12">
                         <label for="cc-number" class="form-label">Card number</label>
-                        <input type="text" class="form-control" id="cc-number" placeholder="Valid Card Number" name="cardNumber" required>
+                        <input type="text" class="form-control" id="cc-number" placeholder="Valid Card Number" name="cardNumber">
                         <div class="invalid-feedback">
                             Credit card number is required
                         </div>
@@ -139,7 +155,7 @@
 
                     <div class="col-md-12">
                         <label for="cc-expiration" class="form-label">Expiration</label>
-                        <input type="text" class="form-control" id="cc-expiration" placeholder="MM/YYYY" name="expiryDate" required>
+                        <input type="text" class="form-control" id="cc-expiration" placeholder="MM/YYYY" name="expiryDate">
                         <div class="invalid-feedback">
                             Expiration date required
                         </div>
@@ -147,24 +163,24 @@
 
                     <div class="col-md-12">
                         <label for="cc-cvv" class="form-label">CVV</label>
-                        <input type="number" class="form-control" id="cc-cvv" placeholder="123" name="cvv" required>
+                        <input type="number" class="form-control" id="cc-cvv" placeholder="123" name="cvv">
                         <div class="invalid-feedback">
                             Security code required
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <hr class="my-4">
-
-                <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
-            </form>
+            </div>
         </div>
-    </div>
+    </form>
 </div>
 </section>
 @endsection
-@section('paymentJs')
-<script>
+<!-- @section('paymentJs') -->
+
+
+<!-- <script>
     $("#payment_method_one").click(function() {
         if ($(this).is(":checked") == true) {
             // console.log('im checked');
@@ -176,5 +192,5 @@
             $("#card_payment_form").addClass('d-block');
         }
     });
-</script>
-@endsection
+</script> -->
+<!-- @endsection -->

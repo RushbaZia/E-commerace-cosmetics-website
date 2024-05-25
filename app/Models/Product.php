@@ -20,4 +20,7 @@ class Product extends Model
     {
         return $this->belongsToMany(Category::class, 'products_categories', 'product_id', 'category_id');
     }
+    public function checkout(){
+        return $this->belongsToMany(Checkout::class,'order_item', 'product_id', 'checkout_id');
+    }
 }

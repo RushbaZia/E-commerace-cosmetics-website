@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Checkout;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
@@ -22,19 +23,21 @@ class CheckoutController extends Controller
     public function create()
     {
         if (Auth::check()) {
-            return view('client.pages.checkout');
+            $user = User::get();
+            $cart = session()->get('cart', []);
+            return view('client.pages.checkout',compact('user','cart'));
         } else {
             return redirect()->route('login')->with('error','You have to login first');
         }
     }
-
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        $checkout = Checkout::create($request->except('_token'));
-        return redirect()->route('adminDashboard')->with('status', 'Checkout Details Setup successfully');
+        $checkout = Checkout::create($request->all());
+        // $checkout ->tracking_no="ORD".rand(1111,9999);
+        return redirect()->route('checkout.create')->with('status', 'You have successfully placed your order');
     }
 
     /**

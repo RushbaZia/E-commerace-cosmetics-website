@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('checkouts', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('Cascade');
             $table->string('fname');
             $table->string('lname');
             $table->string('email');
@@ -22,11 +24,12 @@ return new class extends Migration
             $table->string('city');
             $table->integer('zip');
             $table->string('paymentMethod');
-            $table->string('cardName')->nullable();
             $table->bigInteger('cardNumber')->nullable();
             $table->string('expiryDate')->nullable();
             $table->integer('cvv')->nullable();
-
+            $table->enum('status', ['pending', 'processing', 'completed', 'decline'])->default('pending');
+            // $table->tinyInteger('status')->default('0');
+            // $table->string('tracking_no');
             $table->timestamps();
         });
     }
