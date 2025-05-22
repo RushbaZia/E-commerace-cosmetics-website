@@ -14,24 +14,32 @@ class CommentController extends Controller
     public function index()
     {
         $comment = Comment::all();
-        $posts = Post::get();
-        return view('admin.pages.comments.index', compact('comment', 'posts'));
+        // $posts = Post::get();
+        $comment = Comment::with('post')->get();
+        return view('admin.pages.comments.index', compact('comment'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-    }
+    public function create() {}
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        $comment = Comment::create($request->all());
-        return redirect()->route('clientBlog');
+        // dd($request->all());
+        // $comment = Comment::create($request->except('_token', 'post_id'));
+        //  $comment->save();
+        // $comment->post()->attach($request->post_id);
+        $comment = Comment::create([
+            'post_id' => $request->post_id,
+            'name' => $request->name,
+            'email' => $request->email,
+            'message' => $request->message,
+        ]);
+        return redirect()->route('clientBlog')->with('status', 'Added sucessfully!');
     }
 
     /**
@@ -63,6 +71,7 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
+        // $comment->post()->detach();
         $comment->delete();
         return redirect()->back()->with('delete', "User Comment Deleted Successfully");
     }

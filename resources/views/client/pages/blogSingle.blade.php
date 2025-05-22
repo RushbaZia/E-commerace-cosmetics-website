@@ -41,23 +41,23 @@
                         {{$post->content}}
                     </p>
                     <p>
-                    <h4>Lorem Ipsum</h4>
+                    <h4>Treaments</h4>
                     {{$post->content}}
                     </p>
                     <p>
-                    <h4>Lorem Ipsum</h4>
+                    <h4>MakeOver</h4>
                     {{$post->content}}
                     </p>
                     <p>
-                    <h4>Lorem Ipsum</h4>
+                    <h4>Cosmetics</h4>
                     {{$post->content}}
                     </p>
                     <p>
-                    <h4>Lorem Ipsum</h4>
+                    <h4>HairCare</h4>
                     {{$post->content}}
                     </p>
                     <p>
-                    <h4>Lorem Ipsum</h4>
+                    <h4>SkinCare</h4>
                     {{$post->content}}
                     </p>
                 </div>
@@ -101,6 +101,9 @@
                         <h3 class="mb-5">Leave a comment</h3>
                         <form method="POST" action="{{route('comment.store')}}" class="p-5 bg-light">
                             @csrf
+                            <div class="col-md-4">
+                                <input type="hidden" name="post_id" value="{{ $post->id }}"><br>
+                            </div>
                             <div class="form-group">
                                 <label for="name">Name *</label>
                                 <input type="text" class="form-control" id="name" name="name">
@@ -112,7 +115,7 @@
 
                             <div class="form-group">
                                 <label for="message">Message</label>
-                                <textarea  id="message" cols="30" rows="10" class="form-control" name="message"></textarea>
+                                <textarea id="message" cols="30" rows="10" class="form-control" name="message"></textarea>
                             </div>
                             <div class="form-group">
                                 <button type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">Post Comment</button>

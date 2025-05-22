@@ -195,8 +195,8 @@
             @foreach($products as $product)
             <div class="col-md-3 mb-5">
                 <div class="card" style="background-color: #fff; border: none; border-radius: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                    <div class="image-container" style="  border-radius: 10px; ">
-                        <img src="/storage/{{$product->image}}" class="img-fluid">
+                    <div class="image-container" style="  border-radius: 10px;">
+                        <img src="/storage/{{$product->image}}" class="img-fluid" style="width: 275px;height:183px;">
                     </div>
                     <div class="product-detail-container p-2">
                         <div class="d-flex justify-content-between align-items-center">
@@ -225,7 +225,11 @@
             </div>
             @endforeach
         </div>
-        <center> <button class="loadMore" style="border:2px solid skyblue; background-color:aquamarine; cursor:pointer;"><b>More Products</b><span class="spinner-border spinner-border-sm text-primary ms-3"></span></button></center>
+        <center>
+            <a href="{{route('productShop')}}" class="btn loadMore" style="border:2px solid skyblue; background-color:aquamarine; cursor:pointer;"><b>More Products</b>
+                <!-- <span class="spinner-border spinner-border-sm text-primary ms-3"></span> -->
+            </a>
+        </center>
     </div>
 
 
@@ -277,7 +281,7 @@
 
             if (confirm("Are you sure want to remove?")) {
                 $.ajax({
-                    url: '{{ route('remove.from.cart')}}',
+                    url: "{{ route('remove.from.cart') }}",
                     method: "DELETE",
                     data: {
                         _token: '{{ csrf_token() }}',

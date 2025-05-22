@@ -29,15 +29,8 @@
                     <tr>
                         <td>{{ $comment->id}}</td>
                         <td>{{ $comment->name}}</td>
-                        <td>
-                            @if($comment->post)
-                            @foreach($comment->post as $post)
-                            {{ $post->title }}
-                            @endforeach
-                            @else
-                            No posts available
-                            @endif
-                        </td>
+                        
+                        <td>{{ $comment->post->title ?? 'No posts available' }}</td>
 
                         <td>{{ $comment->message}}</td>
                         <td>{{ $comment->created_at->format('M m ,Y D H:i:s')}}</td>

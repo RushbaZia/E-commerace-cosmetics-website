@@ -65,9 +65,9 @@
                                 </td>
                                 <td class="d-flex">
 
-                                
+                                    @can('update-user')
                                     <a href="{{route('users.edit',[$user->id])}}" class="btn btn-success me-2"><i class="fa-solid fa-pen"></i></a>
-                                   
+                                    @endcan
 
                                     @can('delete-user')
 

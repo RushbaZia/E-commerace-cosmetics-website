@@ -15,6 +15,7 @@ class Post extends Model
         'category_id',
         'author',
         'image',
+        
     ]; 
     public function tag()
     {
@@ -24,5 +25,10 @@ class Post extends Model
     {
         return $this->belongsToMany(Category::class, 'posts_categories', 'post_id', 'category_id');
     } 
+    public function comment()
+    {
+        // return $this->belongsToMany(Comment::class, 'posts_comments', 'post_id', 'comment_id');
+        return $this->hasMany(Comment::class);
+    }
 
 }
