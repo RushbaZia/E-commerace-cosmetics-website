@@ -37,6 +37,30 @@
     <link rel="stylesheet" href="{{ asset('client/css/style.css') }}">
 
     <style>
+        .hero-wrap .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            /* semi-transparent black */
+            z-index: 1;
+        }
+
+        .hero-wrap .text-center {
+            position: relative;
+            z-index: 2;
+            color: rgb(255, 255, 255);
+            /* make sure text is white or light */
+        }
+
+        .hero-wrap h1,
+        .hero-wrap p,
+        .hero-wrap a {
+            color: rgb(255, 255, 255) !important;
+        }
+
         .thumbnail {
             position: relative;
             padding: 0px;
@@ -133,51 +157,73 @@
 
 <body>
 
+    <div class="hero-wrap js-fullheight" style="background-image: url('storage/upload/Hero_img.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+                <div class="col-md-8 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%'}">
+                    <div class="icon">
+                        <a href="index.html" class="logo">
+                            <span class="flaticon-flower"></span>
+                            <h1>Pretty Gurls</h1>
+                        </a>
+                    </div>
+                    <h1 class="mb-3 mt-5 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Shop Now
+                    </h1>
+                    <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+                        <span>Shop</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- NAVBAR -->
     @include('client.common.navbar')
 
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-sm-12 col-12 main-section">
-                <div class="dropdown">
-                    <button type="button" class="btn btn-info" data-toggle="dropdown">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
-                    </button>
-                    <div class="dropdown-menu">
-                        <div class="row total-header-section">
-                            <div class="col-lg-6 col-sm-6 col-6">
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
-                            </div>
-                            @php $total = 0 @endphp
-                            @foreach((array) session('cart') as $id => $details)
-                            @php $total += $details['price'] * $details['quantity'] @endphp
-                            @endforeach
-                            <div class="col-lg-6 col-sm-6 col-6 total-section text-right">
-                                <p>Total: <span class="text-info">$ {{ $total }}</span></p>
-                            </div>
+
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-12 main-section">
+            <div class="dropdown">
+                <button type="button" class="btn btn-info" data-toggle="dropdown">
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
+                </button>
+                <div class="dropdown-menu">
+                    <div class="row total-header-section">
+                        <div class="col-lg-6 col-sm-6 col-6">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
                         </div>
-                        @if(session('cart'))
-                        @foreach(session('cart') as $id => $details)
-                        <div class="row cart-detail">
-                            <div class="col-lg-4 col-sm-4 col-4 cart-detail-img">
-                                <img src="/storage/{{ $details['image'] }}" />
-                            </div>
-                            <div class="col-lg-8 col-sm-8 col-8 cart-detail-product">
-                                <p>{{ $details['name'] }}</p>
-                                <span class="price text-info"> ${{ $details['price'] }}</span> <span class="count"> Quantity:{{ $details['quantity'] }}</span>
-                            </div>
-                        </div>
+                        @php $total = 0 @endphp
+                        @foreach((array) session('cart') as $id => $details)
+                        @php $total += $details['price'] * $details['quantity'] @endphp
                         @endforeach
-                        @endif
-                        <div class="row">
-                            <div class="col-lg-12 col-sm-12 col-12 text-center checkout">
-                                <a href="{{ route('cart') }}" class="btn btn-primary btn-block">View all</a>
-                            </div>
+                        <div class="col-lg-6 col-sm-6 col-6 total-section text-right">
+                            <p>Total: <span class="text-info">$ {{ $total }}</span></p>
+                        </div>
+                    </div>
+                    @if(session('cart'))
+                    @foreach(session('cart') as $id => $details)
+                    <div class="row cart-detail">
+                        <div class="col-lg-4 col-sm-4 col-4 cart-detail-img">
+                            <img src="/storage/{{ $details['image'] }}" />
+                        </div>
+                        <div class="col-lg-8 col-sm-8 col-8 cart-detail-product">
+                            <p>{{ $details['name'] }}</p>
+                            <span class="price text-info"> ${{ $details['price'] }}</span> <span class="count"> Quantity:{{ $details['quantity'] }}</span>
+                        </div>
+                    </div>
+                    @endforeach
+                    @endif
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12 col-12 text-center checkout">
+                            <a href="{{ route('cart') }}" class="btn btn-primary btn-block">View all</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <div class="container">
 
@@ -192,44 +238,19 @@
     <!-- SECTIONS -->
     <div class="container mt-5 mb-5">
         <div class="row ">
-            @foreach($products as $product)
-            <div class="col-md-3 mb-5">
-                <div class="card" style="background-color: #fff; border: none; border-radius: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-                    <div class="image-container" style="  border-radius: 10px;">
-                        <img src="/storage/{{$product->image}}" class="img-fluid" style="width: 275px;height:183px;">
-                    </div>
-                    <div class="product-detail-container p-2">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h5 class="dress-name">{{$product->name}}</h5>
-                            <div class="d-flex flex-column mb-2">
-                                <span class="new-price">${{$product->price}}</span>
-                                <small class="old-price text-right">Left: {{$product->quantity}} </small>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center pt-1">
-                            <div>{{$product->details}} </div>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center pt-1">
-                            <div>
-                                <i class="fa fa-star-o rating-star"></i>
-                                <span class="rating-number">4.8</span>
-                            </div>
-                            <div><a href="{{route('checkout.create')}}" class="btn btn-warning"><b>Buy +</b></a></div>
-                        </div>
 
-                        <div class="d-flex justify-content-center ">
-                            <p class="btn-holder"><a href="{{ route('add.to.cart', $product->id) }}" class="btn btn-danger ps-5 pe-5" role="button">Add to cart</a> </p>
-                        </div>
-                    </div>
-                </div>
+            <div class="row" id="product-list">
+                @include('client.partials.product_cards',['products' => $products])
             </div>
-            @endforeach
         </div>
+
+        @if ($products->hasMorePages())
         <center>
-            <a href="{{route('productShop')}}" class="btn loadMore" style="border:2px solid skyblue; background-color:aquamarine; cursor:pointer;"><b>More Products</b>
-                <!-- <span class="spinner-border spinner-border-sm text-primary ms-3"></span> -->
-            </a>
+            <button id="load-more" class="btn btn-info loadMore" data-url="{{ route('productShop.loadMore', ['page' => $products->currentPage() + 1]) }}" style="border:2px solid; cursor:pointer;">
+                <b>More Products</b>
+            </button>
         </center>
+        @endif
     </div>
 
 
@@ -243,17 +264,33 @@
         </svg>
     </div>
 
-    <script src="{{ asset('client/js/jquery.min.js')}}"></script>
-    <!-- <script>
-        $(".col-md-3").slice(0, 4).show();
-        $(".loadMore").on("click", function() {
 
-            $(".col-md-3:hidden").slice(0, 4).show();
-            if ($(".col-md-3:hidden").length == 0) {
-                $(".loadMore").fadeOut();
-            }
-        })
-    </script> -->
+    <script src="{{ asset('client/js/jquery.min.js')}}"></script>
+    <script>
+        $(document).on('click', '#load-more', function() {
+            let button = $(this);
+            let url = button.data('url');
+
+            $.ajax({
+                url: url,
+                type: 'GET',
+                dataType: 'json',
+                success: function(response) {
+                    $('#product-list').append(response.products);
+
+                    if (response.next_page_url) {
+                        button.data('url', response.next_page_url);
+                    } else {
+                        button.remove(); // No more pages, so remove the button
+                    }
+                },
+                error: function(xhr) {
+                    console.error(xhr.responseText);
+                    alert('AJAX failed:\n' + xhr.responseText);
+                }
+            });
+        });
+    </script>
     <script type="text/javascript">
         $(".update-cart").change(function(e) {
             e.preventDefault();
@@ -294,11 +331,39 @@
             }
         });
     </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        document.querySelectorAll('.rating-star').forEach(star => {
+            star.addEventListener('click', function() {
+                const rating = this.getAttribute('data-rating');
+                const container = this.closest('.rating');
+                const productId = container.getAttribute('data-product-id');
+
+                fetch("{{ route('reviews.store') }}", {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                        },
+                        body: JSON.stringify({
+                            rating: rating,
+                            product_id: productId
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            container.querySelectorAll('.rating-star').forEach((starEl, idx) => {
+                                starEl.classList.toggle('text-warning', idx < rating);
+                            });
+                        }
+                    });
+            });
+        });
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-    <scrip src="{{ asset('client/js/jquery-migrate-3.0.1.min.js') }}"></scrip>
+
+    <script src="{{ asset('client/js/jquery-migrate-3.0.1.min.js') }}"></script>
     <script src="{{ asset('client/js/popper.min.js') }}"></script>
 
     <script src="{{ asset('client/js/bootstrap.min.js') }}"></script>

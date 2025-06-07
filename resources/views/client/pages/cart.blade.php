@@ -50,7 +50,11 @@
         <tr>
             <td colspan="5" class="text-right">
                 <a href="{{ route('productShop') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a>
+                @if(Auth::check())
                 <a href="{{ route('checkout.create') }}"><button class="btn btn-success">Checkout</button></a>
+                @else
+                <button class="btn btn-primary" onclick="promptLogin()">Checkout</button>
+                @endif
             </td>
         </tr>
     </tfoot>
@@ -60,12 +64,19 @@
     <div class="card">
         <h4 class="text-center p-5">Your Cart is Empty!</h4>
     </div>
-    <a href="{{ route('productShop') }}" class="btn btn-warning"><< Fill Your Cart</a>
+    <a href="{{ route('productShop') }}" class="btn btn-warning">
+        << Fill Your Cart</a>
 </div>
 @endif
 @endsection
 
 @section('scripts')
+<script>
+    function promptLogin() {
+        alert("Please log in to proceed with checkout.");
+        window.location.href = "/login";
+    }
+</script>
 <script type="text/javascript">
     $(".update-cart").change(function(e) {
         e.preventDefault();

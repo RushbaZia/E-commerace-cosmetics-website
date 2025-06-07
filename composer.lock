@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f66f81c00dae9dd0f426849d1872b524",
+    "content-hash": "022c8fd2d474c915b341cca324c1ce5a",
     "packages": [
         {
             "name": "brick/math",
@@ -3332,16 +3332,16 @@
         },
         {
             "name": "stripe/stripe-php",
-            "version": "v14.8.0",
+            "version": "v17.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "7038876e791ed0cd7326d2497515a8e37734b3e8"
+                "reference": "cfe8244f7e5f910b7fdb5c2cf77428c0acbb9f7c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/7038876e791ed0cd7326d2497515a8e37734b3e8",
-                "reference": "7038876e791ed0cd7326d2497515a8e37734b3e8",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/cfe8244f7e5f910b7fdb5c2cf77428c0acbb9f7c",
+                "reference": "cfe8244f7e5f910b7fdb5c2cf77428c0acbb9f7c",
                 "shasum": ""
             },
             "require": {
@@ -3351,7 +3351,7 @@
                 "php": ">=5.6.0"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "3.5.0",
+                "friendsofphp/php-cs-fixer": "3.72.0",
                 "phpstan/phpstan": "^1.2",
                 "phpunit/phpunit": "^5.7 || ^9.0"
             },
@@ -3385,9 +3385,9 @@
             ],
             "support": {
                 "issues": "https://github.com/stripe/stripe-php/issues",
-                "source": "https://github.com/stripe/stripe-php/tree/v14.8.0"
+                "source": "https://github.com/stripe/stripe-php/tree/v17.3.0"
             },
-            "time": "2024-05-23T20:23:58+00:00"
+            "time": "2025-05-28T18:59:29+00:00"
         },
         {
             "name": "symfony/console",
@@ -8330,12 +8330,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.1"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }

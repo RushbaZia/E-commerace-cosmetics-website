@@ -19,10 +19,9 @@ class ClientController extends Controller
     {
         $categories = Category::get();
         $about = AboutPage::get();
-        $posts = Post::get();
-        $banners=Banner::get();
+        $posts = Post::latest()->take(3)->get();
         $price=Price::get();
-        return view('client.dashboard', compact('categories','about','posts','banners','price'));
+        return view('client.dashboard', compact('categories','about','posts','price'));
     }
     /**
      * Show the form for creating a new resource.

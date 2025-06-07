@@ -22,14 +22,27 @@ class Checkout extends Model
         'cardNumber',
         'expiryDate',
         'cvv',
-        'product_id',
-        // 'tracking_no'
+        // 'product_id',
+        'status',
+        'total',
+        'tracking_no'
+    ];
+    public const STATUSES = [
+        'pending' => 'Pending',
+        'processing' => 'Processing',
+        'completed' => 'Completed',
+        'decline' => 'Decline',
     ];
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-    public function product(){
-        return $this->belongsToMany(Product::class,'order_item', 'product_id', 'checkout_id');
+    public function product()
+    {
+        return $this->belongsToMany(Product::class, 'order_item', 'product_id', 'checkout_id');
+    }
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class);
     }
 }

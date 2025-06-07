@@ -21,7 +21,6 @@ class BlogPageController extends Controller
         $comments = Comment::get();
         return view('client.pages.blog', compact('posts'));
     }
-
     /**
      * Show the form for creating a new resource.
      */

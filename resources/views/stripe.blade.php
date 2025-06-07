@@ -5,10 +5,10 @@
     <title>Stripe Payment Gateway Integration</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body>
-
     <div class="container">
         <div class="card ">
             <div class="card-header">
@@ -31,7 +31,6 @@
 
                                 <form role="form" action="{{ route('stripe.post') }}" method="post" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}" id="payment-form">
                                     @csrf
-
                                     <div class='form-row row'>
                                         <div class='col-xs-12 form-group required'>
                                             <label class='control-label'>Name on Card</label> <input class='form-control' size='4' type='text'>
@@ -58,8 +57,10 @@
 
                                     <div class='form-row row'>
                                         <div class='col-md-12 error form-group hide'>
-                                            <div class='alert-danger alert'>Please correct the errors and try
-                                                again.</div>
+                                            <div class='alert-danger alert'>
+                                                Please correct the errors and try
+                                                again.
+                                            </div>
                                         </div>
                                     </div>
                                     @php $total = 0 @endphp
@@ -71,7 +72,6 @@
                                             <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now (${{ $total }})</button>
                                         </div>
                                     </div>
-
                                 </form>
                             </div>
                         </div>
@@ -79,16 +79,13 @@
                 </div>
             </div>
         </div>
-
-
-
-
     </div>
 
 </body>
 
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="text/javascript">
     $(function() {
 

@@ -15,7 +15,6 @@ class CategoryController extends Controller
         $category = Category::all();
         return view('admin.pages.category.index', compact('category'));
     }
-
     /**
      * Show the form for creating a new resource.
      */

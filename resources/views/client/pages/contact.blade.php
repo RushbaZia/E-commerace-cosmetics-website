@@ -1,19 +1,20 @@
 @extends('client.common.layout')
 
 @section('hero')
-<div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+<div class="hero-wrap js-fullheight"
+    style="background-image: url('{{ asset('storage/upload/Hero_img.jpg') }}');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
             <div class="col-md-8 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
                 <div class="icon">
-                    <a href="index.html" class="logo">
+                    <a href="" class="logo">
                         <span class="flaticon-flower"></span>
-                        <h1>Pretty</h1>
+                        <h1>Pretty Gurls</h1>
                     </a>
                 </div>
                 <h1 class="mb-3 mt-5 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Contact</h1>
-                <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>Contact</span></p>
+                <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span>Contact</span></p>
             </div>
         </div>
     </div>
@@ -34,10 +35,10 @@
                         <h2 class="h4">Contact Information</h2>
                     </div>
                     <div class="col-md-12 mb-3">
-                        <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
+                        <p><span>Address:</span> Auto Centre 108-Lytton Road, Lahore,Pakistan</p>
                     </div>
                     <div class="col-md-12 mb-3">
-                        <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+                        <p><span>Phone:</span> <a href="tel://1234567920">+92 328138185</a></p>
                     </div>
                     <div class="col-md-12 mb-3">
                         <p><span>Email:</span> <a href="mailto:info@yoursite.com">pretty@gmail.com</a></p>
@@ -79,6 +80,7 @@
 </section>
 
 <div class="map">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d111551.9926412813!2d-90.27317134641879!3d38.606612219170856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54eab584e432360b%3A0x1c3bb99243deb742!2sUnited%20States!5e0!3m2!1sen!2sbd!4v1597926938024!5m2!1sen!2sbd" height="500" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3400.0681759276317!2d74.31172917412084!3d31.549743545692948!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391904a85dc84db3%3A0x6ea90ca8ef705f6d!2sAuto%20Centre!5e0!3m2!1sen!2s!4v1749195794459!5m2!1sen!2s" width="600" height="500" style="border:0;" allowfullscreen=""aria-hidden="false" tabindex="0" ></iframe>
+    
 </div>
 @endsection

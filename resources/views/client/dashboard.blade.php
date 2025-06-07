@@ -1,21 +1,20 @@
 @extends('client.common.layout')
 @section('hero')
 
-<div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
-    <div class="overlay"></div>
+<div class="hero-wrap js-fullheight" style="background-image: url('storage/upload/Hero_img.jpg');" data-stellar-background-ratio="0.5">
+    <!-- <div class="overlay"></div> -->
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
             <div class="col-md-8 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
                 <div class="icon">
-                    <a href="index.html" class="logo">
+                    <a class="logo">
                         <span class="flaticon-flower"></span>
-                        <h1>Pretty</h1>
+                        <h1>Pretty Gurls</h1>
                     </a>
                 </div>
-                <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Beauty Salon</h1>
-                <p class="mb-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Created by <a href="#">Colorlib.com</a></p>
+                <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Home</h1>
 
-                <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><a href="https://vimeo.com/45830194" class="btn btn-white btn-outline-white px-4 py-3">View Our Services</a></p>
+                <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><a href="{{ route('productShop') }}" class="btn btn-white btn-outline-white px-4 py-3">View Our Products</a></p>
             </div>
         </div>
     </div>
@@ -28,6 +27,12 @@
 
 <section class="ftco-section">
     <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+            <div class="col-md-7 heading-section ftco-animate text-center">
+                <h2 class="mb-4">Our Product Categories</h2>
+            </div>
+        </div>
+
         <div class="row">
             @foreach($categories as $category)
             <div class="col-md-4 ftco-animate">
@@ -185,6 +190,9 @@
                 </div>
             </div>
             @endforeach
+            <div class="col-md-12 text-center mt-4">
+        <a href="{{ route('clientBlog') }}" class="btn btn-primary">Explore More Blogs</a>
+    </div>
         </div>
     </div>
 </section>
@@ -196,23 +204,23 @@
             <div class="col-md-10">
                 <div class="row">
                     <div class="col-md-3 ftco-animate">
-                        <a href="#" class="partner-entry">
-                            <img src="images/partner-1.jpg" class="img-fluid" alt="Colorlib template">
+                        <a href="" class="partner-entry">
+                            <img src="client/images/partner-1.jpg" class="img-fluid">
                         </a>
                     </div>
                     <div class="col-md-3 ftco-animate">
-                        <a href="#" class="partner-entry">
-                            <img src="images/partner-2.jpg" class="img-fluid" alt="Colorlib template">
+                        <a href="" class="partner-entry">
+                            <img src="client/images/partner-2.jpg" class="img-fluid">
                         </a>
                     </div>
                     <div class="col-md-3 ftco-animate">
-                        <a href="#" class="partner-entry">
-                            <img src="images/partner-3.jpg" class="img-fluid" alt="Colorlib template">
+                        <a href="" class="partner-entry">
+                            <img src="client/images/partner-3.jpg" class="img-fluid">
                         </a>
                     </div>
                     <div class="col-md-3 ftco-animate">
-                        <a href="#" class="partner-entry">
-                            <img src="images/partner-4.jpg" class="img-fluid" alt="Colorlib template">
+                        <a href="" class="partner-entry">
+                            <img src="client/images/partner-4.jpg" class="img-fluid">
                         </a>
                     </div>
                 </div>

@@ -85,8 +85,6 @@ class PostController extends Controller
             $post->image = $filename;
         }
         $post->image = "upload/$filename";
-
-        
         $post->update();
         $post->tag()->sync($request->tag_id);
         $post->category()->sync($request->category_id);

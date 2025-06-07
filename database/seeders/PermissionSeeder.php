@@ -42,10 +42,14 @@ class PermissionSeeder extends Seeder
             'view-tag',
             'update-tag',
             'delete-tag',
-            'create-banner',
-            'view-banner',
-            'update-banner',
-            'delete-banner',
+            'view-orders',
+            'edit-orders',
+            'delete-orders',
+            'view-comments',
+            'delete-comments',
+            'view-reviews',
+            'view-UserQuery',
+            'delete-UserQuery',
 
         ];
         foreach ($permissions as $permission) {

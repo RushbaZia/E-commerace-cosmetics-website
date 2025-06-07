@@ -15,6 +15,8 @@
                 <label for="Post Content" class="form-label">Quote</label>
 
                 <textarea class="form-control" id="Post Content" name="content"></textarea>
+                <!-- Quill editor container -->
+                
 
             </div>
             <div class="mb-3">
@@ -39,10 +41,10 @@
                 </select>
             </div>
             <div class="mb-3">
-            <label for="Post Thumbnail" class="form-label">Thumbnail</label>
+                <label for="Post Thumbnail" class="form-label">Thumbnail</label>
                 <input type="file" class="form-control" name="image">
             </div>
-            
+
             <div class="mt-4">
                 <button type="submit" class="btn btn-primary">Create</button>
                 <button type="reset" class="btn btn-danger">Clear</button>

@@ -38,7 +38,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $product = Product::create($request->except('_token', 'category_id'));
-        
+
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $extenstion = $file->getClientOriginalExtension();
@@ -53,6 +53,36 @@ class ProductController extends Controller
 
         return redirect()->route('products.index')->with('status', 'Product added Successfully');
     }
+    public function shop(Request $request)
+    {
+        $perPage = 8; // Number of products per page
+        $products = Product::orderBy('created_at', 'desc')->paginate($perPage);
+
+        // Check if the request is an AJAX call
+        if ($request->ajax()) {
+            return response()->json([
+                'products' => view('client.partials.product_cards', compact('products'))->render(),
+                'next_page_url' => $products->nextPageUrl()
+            ]);
+        }
+
+        return view('client.pages.shop', compact('products'));
+    }
+    public function fetchMoreProducts(Request $request)
+{
+    $products = Product::paginate(8); // Use same page size as initial
+
+    if ($request->ajax()) {
+        $view = view('client.partials.product_cards', compact('products'))->render();
+
+        return response()->json([
+            'products' => $view,
+            'next_page_url' => $products->nextPageUrl()
+        ]);
+    }
+
+    return view('client.pages.shop', compact('products'));
+}
 
     /**
      * Display the specified resource.
@@ -77,7 +107,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $product->update($request->except('_token','category_id'));
+        $product->update($request->except('_token', 'category_id'));
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $extenstion = $file->getClientOriginalExtension();
@@ -105,15 +135,15 @@ class ProductController extends Controller
     {
         return view('client.pages.cart');
     }
-  
-   
+
+
     public function addToCart($id)
     {
         $product = Product::findOrFail($id);
-          
+
         $cart = session()->get('cart', []);
-  
-        if(isset($cart[$id])) {
+
+        if (isset($cart[$id])) {
             $cart[$id]['quantity']++;
         } else {
             $cart[$id] = [
@@ -123,28 +153,28 @@ class ProductController extends Controller
                 "image" => $product->image
             ];
         }
-          
+
         session()->put('cart', $cart);
         return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
-  
+
 
     public function update2(Request $request)
     {
-        if($request->id && $request->quantity){
+        if ($request->id && $request->quantity) {
             $cart = session()->get('cart');
             $cart[$request->id]["quantity"] = $request->quantity;
             session()->put('cart', $cart);
             session()->flash('success', 'Cart updated successfully');
         }
     }
-  
-   
+
+
     public function remove(Request $request)
     {
-        if($request->id) {
+        if ($request->id) {
             $cart = session()->get('cart');
-            if(isset($cart[$request->id])) {
+            if (isset($cart[$request->id])) {
                 unset($cart[$request->id]);
                 session()->put('cart', $cart);
             }

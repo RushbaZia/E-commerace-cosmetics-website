@@ -20,11 +20,10 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PriceController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ShippingController;
+use App\Http\Controllers\ReviewController;
 use App\Models\Tag;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 
 Route::group(['middleware' => 'auth'], function () {
@@ -33,23 +32,38 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('roles/{id}/givePermissions', [RoleController::class, 'addPermissionToRole'])->name('roles.givePermissions');
     Route::put('roles/{id}/givePermissions', [RoleController::class, 'givePermissionToRole']);
     Route::resource('users', UserController::class);
-    Route::get('/admin/dashboard', [AdminController::class, 'numberCount'])->name('adminDashboard');
+    Route::middleware(['auth'])->get('/admin/dashboard', [AdminController::class, 'numberCount'])->name('adminDashboard');
+     Route::get('/admin/reviews', [AdminController::class, 'allReviews'])->name('admin.reviews');
 });
+Route::get('/user/orders', [AdminController::class, 'userOrders'])->name('user.orders');
+
+
+Route::get('/user/reviews', [ReviewController::class, 'index'])->name('user.reviews');
+Route::post('/reviews/store', [ReviewController::class, 'store'])->name('reviews.store');
+
+
+
 Route::get('/admin/profile', [ProfileController::class, 'profile']);
-// Route::get('/admin/dashboard', [AdminController::class, 'headerLogo']);
-// Route::get('/admin/userCount', [UserController::class, 'userCount'])->name('userCount');
 Route::resource('products', ProductController::class);
 Route::get('/client/productShop', [ProductController::class, 'productShop'])->name('productShop');
 Route::resource('category', CategoryController::class);
 Route::resource('posts', PostController::class);
 Route::resource('price', PriceController::class);
-Route::resource('banner', BannerController::class);
 Route::resource('tags', TagController::class);
 Route::resource('about', AboutPageController::class);
-Route::resource('checkout', CheckoutController::class)->middleware('checkout.auth');
-Route::resource('contact', ContactController::class);
+Route::resource('shipping', ShippingController::class)->except(['create', 'show', 'store']);;
+// Route::resource('checkout', CheckoutController::class)->middleware('checkout.auth');
 
-Route::get('/client/dashboard', [ClientController::class, 'home'])->name('clientDashboard');
+Route::middleware('auth')->group(function () {
+    Route::resource('checkout', CheckoutController::class);
+});
+Route::controller(StripePaymentController::class)->group(function () {
+    Route::get('stripe', 'stripe');
+    Route::post('stripe', 'stripePost')->name('stripe.post');
+});
+
+Route::resource('contact', ContactController::class);
+Route::get('/', [ClientController::class, 'home'])->name('clientDashboard');
 Route::get('/client/blog', [BlogPageController::class, 'blog'])->name('clientBlog');
 Route::post('/{id}/show', [BlogPageController::class, 'show'])->name('blog.show');
 Route::resource('comment', CommentController::class);
@@ -60,10 +74,8 @@ Route::get('cart', [ProductController::class, 'cart'])->name('cart');
 Route::get('add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('add.to.cart');
 Route::patch('update-cart', [ProductController::class, 'update2'])->name('update.cart');
 Route::delete('remove-from-cart', [ProductController::class, 'remove'])->name('remove.from.cart');
-Route::controller(StripePaymentController::class)->group(function () {
-    Route::get('stripe', 'stripe');
-    Route::post('stripe', 'stripePost')->name('stripe.post');
-});
+Route::get('/shop', [ProductController::class, 'shop'])->name('productShop');
+Route::get('/shop/load-more', [ProductController::class, 'fetchMoreProducts'])->name('productShop.loadMore');
 
 Route::get('/client/shop', function () {
     return view('client.pages.shop');

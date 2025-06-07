@@ -5,7 +5,7 @@
     <title>Pretty-Gurls</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="{{asset('client/images/favicon.png')}}">
+    <link rel="icon" type="image/png" href="{{asset('client/images/flower.png')}}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -25,11 +25,10 @@
 
     <link rel="stylesheet" href="{{ asset('client/css/bootstrap-datepicker.css') }}">
     <link rel="stylesheet" href="{{ asset('client/css/jquery.timepicker.css') }}">
-
-
     <link rel="stylesheet" href="{{ asset('client/css/flaticon.css') }}">
     <link rel="stylesheet" href="{{ asset('client/css/icomoon.css') }}">
     <link rel="stylesheet" href="{{ asset('client/css/style.css') }}">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </head>
 
@@ -45,15 +44,17 @@
 
     <!-- FOOTER -->
     @include('client.common.footer')
-    
+
     <!-- loader -->
     <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
-        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
-    </svg></div>
-    
- 
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
+        </svg></div>
+   
 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{ asset('client/js/jquery.min.js')}}"></script>
     <script src="{{ asset('client/js/jquery-migrate-3.0.1.min.js') }}"></script>
     <script src="{{ asset('client/js/popper.min.js') }}"></script>
@@ -93,7 +94,7 @@
                 })
         })()
     </script>
-   @yield('paymentJs')
+    @yield('paymentJs')
 </body>
 
 </html>

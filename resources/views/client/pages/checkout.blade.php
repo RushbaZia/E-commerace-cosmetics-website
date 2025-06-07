@@ -1,7 +1,7 @@
 @extends('client.common.layout')
 
 @section('hero')
-<div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+<div class="hero-wrap js-fullheight" style="background-image: url('{{ asset('storage/upload/Hero_img.jpg') }}');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
@@ -9,11 +9,11 @@
                 <div class="icon">
                     <a href="index.html" class="logo">
                         <span class="flaticon-flower"></span>
-                        <h1>Pretty</h1>
+                        <h1>Pretty Gurls</h1>
                     </a>
                 </div>
                 <h1 class="mb-3 mt-5 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Checkout</h1>
-                <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>Checkout</span></p>
+                <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"> <span>Checkout</span></p>
             </div>
         </div>
     </div>
@@ -24,9 +24,6 @@
 @endif
 @section('content')
 <div class="container mt-5 mb-5">
-    @if(session('status'))
-    <div class="alert alert-success mt-3">{{session('status')}}</div>
-    @endif
     <form class="needs-validation" method="POST" action="{{route('checkout.store')}}" novalidate>
         @csrf
         <div class="row g-5">
@@ -62,15 +59,15 @@
                     @endforeach
                     <td colspan="3">
                         <h4>Total: <span class="text-info">$ {{ $total }}</h3>
+                                <input type="hidden" name="total" value="{{ $total }}">
                     </td>
                     @endif
                 </table>
-                <button class="w-100 btn btn-primary btn-lg" type="submit">Place Order</button>
 
+                <button class="w-100 btn btn-primary btn-lg" type="submit">Place Order</button>
             </div>
             <div class="col-md-7 col-lg-8">
                 <h4 class="mb-3">Billing address</h4>
-
                 <div class="row g-3">
                     @foreach($user as $item)
                     <input type="hidden" value="{{$item->id}}" class="form-control" name="user_id">
@@ -82,7 +79,6 @@
                             Valid first name is required.
                         </div>
                     </div>
-
                     <div class="col-sm-6">
                         <label for="lastName" class="form-label">Last name</label>
                         <input type="text" class="form-control" id="lastName" placeholder="Sir Name" name="lname" required>
@@ -118,57 +114,18 @@
                 </div>
 
                 <hr class="my-4">
-
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="same-address">
-                    <label class="form-check-label" for="same-address">Shipping address is the same as my billing address</label>
-                </div>
-
-                <!-- <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="save-info">
-                    <label class="form-check-label" for="save-info">Save this information for next time</label>
-                </div> -->
-
-                <hr class="my-4">
-
                 <h4 class="mb-3">Payment</h4>
                 <div class="my-3">
                     <div class="">
-                        <input id="payment_method_one" name="paymentMethod" type="radio" value="COD" class="form-check-input" checked required>
+                        <input id="payment_method_one" name="paymentMethod" type="radio" value="cod" class="form-check-input" checked required>
                         <label class="form-check-label" for="payment_method_one">Cash On Delivery</label>
                     </div>
                     <div class="">
-                        <input id="payment_method_two" name="paymentMethod" type="radio" value="stripe" class="form-check-input" required onchange="if(this.checked){window.location.href='http://127.0.0.1:8000/stripe'}">
+                        <input id="payment_method_two" name="paymentMethod" type="radio" value="stripe" class="form-check-input">
+                        <!-- required onchange="if(this.checked){window.location.href='http://127.0.0.1:8000/stripe'}" -->
                         <label class="form-check-label" for="payment_method_two">Stripe</label>
                     </div>
                 </div>
-
-                <!-- <div class="row gy-3 d-none mt-3" id="card_payment_form">
-
-                    <div class="col-md-12">
-                        <label for="cc-number" class="form-label">Card number</label>
-                        <input type="text" class="form-control" id="cc-number" placeholder="Valid Card Number" name="cardNumber">
-                        <div class="invalid-feedback">
-                            Credit card number is required
-                        </div>
-                    </div>
-
-                    <div class="col-md-12">
-                        <label for="cc-expiration" class="form-label">Expiration</label>
-                        <input type="text" class="form-control" id="cc-expiration" placeholder="MM/YYYY" name="expiryDate">
-                        <div class="invalid-feedback">
-                            Expiration date required
-                        </div>
-                    </div>
-
-                    <div class="col-md-12">
-                        <label for="cc-cvv" class="form-label">CVV</label>
-                        <input type="number" class="form-control" id="cc-cvv" placeholder="123" name="cvv">
-                        <div class="invalid-feedback">
-                            Security code required
-                        </div>
-                    </div>
-                </div> -->
 
                 <hr class="my-4">
             </div>
@@ -176,21 +133,36 @@
     </form>
 </div>
 </section>
+@if(session()->has('tracking') && session()->has('status'))
+<script>
+    swal({
+        title: "Order Placed!",
+        text: "Tracking #: {{ Session::get('tracking') }}",
+        icon: "success",
+        buttons: {
+            order: {
+                text: "Order Details",
+                value: "order",
+                timer: 3000,
+                className: "btn btn-primary",
+            },
+            checkout: {
+                text: "Back to Checkout",
+                value: "checkout",
+                timer: 3000,
+                className: "btn btn-secondary",
+            }
+        }
+    }).then((value) => {
+        switch (value) {
+            case "order":
+                window.location.href = "{{ route('adminDashboard') }}";
+                break;
+            case "checkout":
+                window.location.href = "{{ route('checkout.create') }}";
+                break;
+        }
+    });
+</script>
+@endif
 @endsection
-<!-- @section('paymentJs') -->
-
-
-<!-- <script>
-    $("#payment_method_one").click(function() {
-        if ($(this).is(":checked") == true) {
-            // console.log('im checked');
-            // $("#card_payment_form").addClass('d-none');
-        }
-    });
-    $("#payment_method_two").click(function() {
-        if ($(this).is(":checked") == true) {
-            $("#card_payment_form").addClass('d-block');
-        }
-    });
-</script> -->
-<!-- @endsection -->

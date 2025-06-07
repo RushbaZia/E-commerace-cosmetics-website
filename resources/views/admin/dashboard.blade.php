@@ -154,35 +154,122 @@
     </div>
     @elseif(Auth::user()->hasRole('User'))
     <div class="col-lg-12">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">S.N</th>
-            <th scope="col">ORDER NO.</th>
-            <th scope="col">NAME</th>
-            <th scope="col">EMAIL</th>
-            <th scope="col">QUANTITY</th>
-            <th scope="col">TOTAL AMOUNT</th>
-            <th scope="col">STATUS</th>
-            <th scope="col">ACTION</th>
-          </tr>
-        </thead>
-        @foreach($users as $user)
-        <tbody>
-          <tr>
-            <th>{{$user->id}}</th>
-            <td></td>
-            <td></td>
-            <td>{{$user->email}}</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><i class="fa-solid fa-pen text-success pe-3"></i><i class="fa-solid fa-trash text-danger"></i></td>
-          </tr>
-          
-        </tbody>
-        @endforeach
-      </table>
+      <div class="row">
+        <!-- Card 1-->
+        <div class="col-xxl-3 col-md-3">
+          <div class="card info-card sales-card">
+
+            <div class="card-body">
+              <h5 class="card-title">Completed</h5>
+
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="fa-solid fa-circle-check text-success"></i>
+                </div>
+                <div class="ps-3">
+                  <h6>{{ $statusCounts['completed'] }}</h6>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div><!-- End Card 1-->
+
+        <!-- Card 2 -->
+        <div class="col-xxl-3 col-md-3">
+          <div class="card info-card revenue-card">
+
+            <div class="card-body">
+              <h5 class="card-title">In Process</h5>
+
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="fa-solid fa-arrows-spin text-secondary"></i>
+                </div>
+                <div class="ps-3">
+                  <h6>{{ $statusCounts['inprocess'] }}</h6>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div><!-- End Card 2 -->
+
+        <!-- Card 3 -->
+        <div class="col-xxl-3 col-md-3">
+
+          <div class="card info-card customers-card">
+
+            <div class="card-body">
+              <h5 class="card-title">Pending</h5>
+
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="fa-solid fa-hourglass-half"></i>
+                </div>
+                <div class="ps-3">
+                  <h6>{{ $statusCounts['pending'] }}</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- End Card 3-->
+        <!-- Card 4 -->
+        <div class="col-xxl-3 col-md-3">
+
+          <div class="card info-card customers-card">
+
+            <div class="card-body">
+              <h5 class="card-title">Declined</h5>
+
+              <div class="d-flex align-items-center">
+                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="fa-solid fa-circle-xmark text-danger"></i>
+                </div>
+                <div class="ps-3">
+                  <h6>{{ $statusCounts['declined'] }}</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- End Card 4 -->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Order ID</th>
+              <th scope="col">Date</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            @forelse($orders as $order)
+            <tr>
+              <td>{{ $order->id }}</td>
+              <td>{{ \Carbon\Carbon::parse($order->created_at)->format('Y-m-d') }}</td>
+              <td>${{ number_format($order->total, 2) }}</td>
+              <td>{{ ucfirst($order->status ?? 'pending') }}</td>
+            </tr>
+            @empty
+            <tr>
+              <td colspan="4">No orders found.</td>
+            </tr>
+            @endforelse
+          </tbody>
+        </table>
+      </div>
+      <div class="col-lg-1"></div>
+      @if($nextDelivery)
+      <div class="col-lg-5 mt-3 p-5 border">
+        <h5><b>Upcoming Delivery</b></h5>
+        <p>OrderID# {{ $nextDelivery->id }} is expected by {{ \Carbon\Carbon::parse($nextDelivery->created_at)->addDays(10)->format('d F, Y') }}</p>
+      </div>
+      @endif
     </div>
     @endif
 </section>

@@ -10,23 +10,7 @@
         </a>
       </li>
       @if (Auth::user()->hasRole('Admin'))
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#banner-nav" data-bs-toggle="collapse" href="#">
-          <i class="fa-regular fa-image"></i><span>Banners</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="banner-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="{{route('banner.index')}}">
-              <i class="bi bi-circle"></i><span>List</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{route('banner.create')}}">
-              <i class="bi bi-circle"></i><span>Create</span>
-            </a>
-          </li>
-        </ul>
-      </li>
+
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#expert-nav" data-bs-toggle="collapse" href="#">
           <i class="fa-solid fa-paintbrush"></i><span>Experts</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -40,7 +24,6 @@
         </ul>
       </li>
       <!-- End Dashboard Nav -->
-
       <li class="nav-heading">Shop</li>
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
@@ -84,19 +67,18 @@
         </a>
         <ul id="shipping-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="#">
+            <a href="{{route('shipping.index')}}">
               <i class="bi bi-circle"></i><span>List</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="bi bi-circle"></i><span>Create</span>
             </a>
           </li>
         </ul>
       </li>
 
-
+      <li class="nav-item">
+        <a href="{{ route('admin.reviews') }}" class="nav-link collapsed">
+          <i class="fa-solid fa-star-half-stroke"></i><span>Reviews</span>
+        </a>
+      </li>
       <li class="nav-heading">Price Packages</li>
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#price-nav" data-bs-toggle="collapse" href="#">
@@ -339,12 +321,12 @@
       @elseif(Auth::user()->hasRole('User'))
       <li class="nav-heading">Shop</li>
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+        <a href="{{ route('user.orders') }}" class="nav-link collapsed">
           <i class="fa-solid fa-box-open"></i><span>Orders</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+        <a href="{{ route('user.reviews') }}" class="nav-link collapsed">
           <i class="fa-solid fa-star-half-stroke"></i><span>Reviews</span>
         </a>
       </li>
@@ -353,8 +335,7 @@
         <a href="{{route('comment.index')}}" class="nav-link collapsed"> <i class="fa-solid fa-pen"></i><span>Comments</span></a>
       </li>
       @endif
-
-
     </ul>
 
-  </aside><!-- End Sidebar-->
+  </aside>
+  <!-- End Sidebar-->

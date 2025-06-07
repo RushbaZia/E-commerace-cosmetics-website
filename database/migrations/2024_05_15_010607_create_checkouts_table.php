@@ -28,8 +28,8 @@ return new class extends Migration
             $table->string('expiryDate')->nullable();
             $table->integer('cvv')->nullable();
             $table->enum('status', ['pending', 'processing', 'completed', 'decline'])->default('pending');
-            // $table->tinyInteger('status')->default('0');
-            // $table->string('tracking_no');
+            $table->decimal('total', 10, 2);
+            $table->string('tracking_no');
             $table->timestamps();
         });
     }

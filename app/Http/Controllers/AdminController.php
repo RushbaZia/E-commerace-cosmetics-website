@@ -7,6 +7,11 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Checkout;
+use App\Models\Review;
+use Illuminate\Support\Facades\Auth;
+
+
 
 use Illuminate\Http\Request;
 
@@ -20,18 +25,32 @@ class AdminController extends Controller
         $categories = Category::get();
         $products = Product::get();
         $posts = Post::get();
-        $users = User::get();
-        return view('admin.dashboard', compact('categories','products','posts','users'));
+        // $users = User::get();
+        $users = Checkout::with('user', 'orderItems')->get();
+        $userId = Auth::id();
+
+        $orders = Checkout::where('user_id', $userId)->latest()->get();
+
+        $statusCounts = [
+            'completed' => $orders->where('status', 'completed')->count(),
+            'inprocess' => $orders->where('status', 'inprocess')->count(),
+            'pending'   => $orders->where('status', 'pending')->count(),
+            'declined'  => $orders->where('status', 'declined')->count(),
+        ];
+        $nextDelivery = $orders->where('status', '!=', 'declined')->first();
+        return view('admin.dashboard', compact('categories', 'products', 'posts', 'users', 'orders', 'statusCounts', 'nextDelivery'));
     }
-  
-
-    /**
-     * Show the form for creating a new resource.
-     */
-
-    /**
-     * Store a newly created resource in storage.
-     */
+    public function userOrders()
+    {
+        $userId = Auth::id();
+        $orders = Checkout::where('user_id', $userId)->latest()->get();
+        return view('admin.pages.orders', compact('orders'));
+    }
+    public function allReviews()
+{
+    $reviews = Review::with('user', 'product')->latest()->get();
+    return view('admin.pages.all-reviews', compact('reviews'));
+}
     public function store(Request $request)
     {
         //

@@ -1,9 +1,12 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Models\Checkout;
 use Session;
 use Stripe;
+
 class StripePaymentController extends Controller
 {
     /**
@@ -13,10 +16,14 @@ class StripePaymentController extends Controller
      */
     public function stripe(Request $data)
     {
-        $checkout=Checkout::get();
-        return view('stripe',compact('checkout'));
+        $checkoutData = session('checkout_data');
+        $total = 0;
+        foreach ((array) session('cart') as $id => $details) {
+            $total += $details['price'] * $details['quantity'];
+        }
+        return view('stripe', compact('checkoutData', 'total'));
     }
-    
+
     /**
      * success response method.
      *
@@ -24,17 +31,42 @@ class StripePaymentController extends Controller
      */
     public function stripePost(Request $request)
     {
-        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-    
-        Stripe\Charge::create ([
-                "amount" => 100 * 100,
-                "currency" => "usd",
-                "source" => $request->stripeToken,
-                "description" => "Test payment from itsolutionstuff.com." 
+
+        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+        $total = 0;
+        foreach ((array) session('cart') as $id => $details) {
+            $total += $details['price'] * $details['quantity'];
+        }
+
+        \Stripe\Charge::create([
+            "amount" => $total * 100,
+            "currency" => "usd",
+            "source" => $request->stripeToken,
+            "description" => "Order Payment",
         ]);
-      
-        Session::flash('success', 'Payment successful!');
-              
-        return redirect()->back();
+        
+        $checkoutData = session('checkout_data');
+        $tracking_no = $checkoutData['tracking_no'];
+        $checkout = Checkout::create($checkoutData);
+
+        // Create order items
+        foreach ((array) session('cart') as $productId => $details) {
+            \App\Models\OrderItem::create([
+                'checkout_id' => $checkout->id,
+                'product_id'  => $productId,
+                'price'       => $details['price'],
+                'quantity'    => $details['quantity'],
+            ]);
+        }
+
+        // Clean up
+        session()->forget('cart');
+        session()->forget('checkout_data');
+
+        return redirect()->route('checkout.create')->with([
+            'status' => "Order placed successfully!",
+            'tracking' => $tracking_no,
+        ]);
     }
 }
